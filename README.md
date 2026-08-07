@@ -6,6 +6,10 @@ Verificar los aspectos legales, normativos y de cumplimiento que aplican al sist
 
 ---
 
+## 📘 Guía paso a paso
+
+Antes de diligenciar el checklist, revise la [**Guía Paso a Paso: Checklist de Cumplimiento Normativo**](clase/guia_paso_a_paso_normatividad.md). Incluye un resumen de qué exige cada marco normativo, la metodología de 5 pasos (de identificar datos sensibles a recomendaciones priorizadas), un ejemplo completo construido paso a paso sobre el caso de GobData, y una tabla de errores comunes.
+
 ## 🏛️ Caso base de referencia: GobData (Portal de Trámites Ciudadanos)
 
 GobData es un portal estatal donde los ciudadanos realizan trámites en línea relacionados con identidad, salud, impuestos, y derechos civiles. El sistema procesa grandes volúmenes de datos sensibles como números de identificación, historial clínico, direcciones y certificados digitales. Está sujeto a múltiples normativas nacionales como la Ley 1581 de Protección de Datos Personales, así como a estándares internacionales como ISO/IEC 27001. Evaluar el cumplimiento normativo permite garantizar la confianza del ciudadano y la integridad de los procesos públicos.
@@ -27,10 +31,15 @@ GobData es un portal estatal donde los ciudadanos realizan trámites en línea r
 
 Durante la clase se espera que el equipo:
 
-- Revise una plantilla de checklist de cumplimiento aplicada al caso GobData.
-- Evalúe el cumplimiento por secciones (consentimiento, seguridad, retención, roles, etc.).
-- Justifique con base en el tipo de datos que se procesan y las interacciones en la plataforma.
-- Registre brechas o hallazgos relevantes.
+Siga la metodología de 5 pasos de la [guía paso a paso](clase/guia_paso_a_paso_normatividad.md) para evaluar el cumplimiento normativo de GobData:
+
+1. Identifique los datos y procesos sensibles del sistema y la normativa aplicable a cada uno.
+2. Construya el checklist agrupando los ítems por sección (consentimiento, seguridad, retención, roles/auditoría).
+3. Evalúe cada ítem como Cumple, Brecha o No aplica, con evidencia o justificación.
+4. Documente el riesgo legal u operativo de cada brecha.
+5. Priorice las brechas y proponga una recomendación para cada una; valide con la [checklist de autoevaluación](clase/guia_paso_a_paso_normatividad.md#5-checklist-de-autoevaluación-antes-de-entregar).
+
+- Registre brechas o hallazgos relevantes en `clase/checklist-gobdata.xlsx` y en `clase/notas.md` (use la [plantilla de notas](plantillas/plantilla_notas.md)).
 
 ---
 
@@ -38,28 +47,37 @@ Durante la clase se espera que el equipo:
 
 Después de la clase, el equipo debe:
 
-- Aplicar el mismo checklist al sistema del cliente.
-- Indicar los elementos que cumplen, los que tienen brechas y los que no aplican.
-- Redactar un informe con recomendaciones.
-- Investigar normativas locales o sectoriales que impacten a su cliente (por ejemplo, MinSalud, MinTIC, SuperSalud, SFC).
+- Aplicar el mismo checklist al sistema del cliente, siguiendo los mismos 5 pasos de la metodología (`entrega/checklist-cliente.xlsx`).
+- Indicar los elementos que cumplen, los que tienen brechas y los que no aplican, con su riesgo y prioridad.
+- Redactar el informe en `entrega/informe.md` usando la [plantilla de informe del taller](plantillas/plantilla_informe_taller.md), con recomendaciones concretas para cada brecha.
+- Investigar normativas locales o sectoriales que impacten a su cliente (por ejemplo, MinSalud, MinTIC, SuperSalud, SFC), y registrar las fuentes en `entrega/referencias.md` con la [plantilla de referencias](plantillas/plantilla_referencias.md).
 
 ---
 
 ## 📁 Estructura esperada del repositorio
 
-```
+```text
 taller-06-normatividad/
 ├── README.md
 ├── clase/
+│   ├── guia_paso_a_paso_normatividad.md   # Marcos normativos, metodología de 5 pasos y ejemplo guiado
 │   ├── checklist-gobdata.xlsx
-│   └── notas.md
+│   └── notas.md                           # Ver plantillas/plantilla_notas.md
 ├── entrega/
 │   ├── checklist-cliente.xlsx
-│   ├── informe.md
-│   └── referencias.md
+│   ├── informe.md                         # Ver plantillas/plantilla_informe_taller.md
+│   └── referencias.md                     # Ver plantillas/plantilla_referencias.md
+└── plantillas/
+    ├── plantilla_informe_taller.md
+    ├── plantilla_notas.md
+    └── plantilla_referencias.md
 ```
 
 ---
+
+## ⚠️ Errores comunes
+
+Antes de entregar, compare su checklist contra los errores más frecuentes (ítems "Cumple" sin evidencia, brechas marcadas como "No aplica", recomendaciones sin relación con la brecha) documentados en la [sección 4 de la guía paso a paso](clase/guia_paso_a_paso_normatividad.md#4-errores-comunes-a-evitar).
 
 ## 📤 Entregables
 
