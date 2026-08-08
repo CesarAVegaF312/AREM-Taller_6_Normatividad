@@ -109,4 +109,29 @@ Esta es la tabla final que se entrega como `checklist-cliente.xlsx`, ordenada de
 
 ---
 
+## 6. Vista ArchiMate equivalente
+
+Igual que en el Taller 5, cada brecha del checklist se modela como un elemento de Motivación (ver la [Guía de Notación ArchiMate](https://github.com/CesarAVegaF312/AREM-ArchiMate/blob/main/guia_notacion_archimate.md)) — pero aquí normalmente es una **Constraint** (algo que la ley obliga, no una opción de diseño) en vez de un Requirement funcional.
+
+```mermaid
+flowchart TD
+    subgraph motivacion["Motivación"]
+        constraint(["🚫 Consentimiento explícito para datos sensibles (Ley 1581)"])
+    end
+    subgraph negocio["Negocio"]
+        tramite["Trámite de Historial Clínico"]
+    end
+
+    constraint -.->|"restringe"| tramite
+
+    classDef motivacion fill:#ccccff,color:#000,stroke:#6666cc;
+    classDef negocio fill:#ffff99,color:#000,stroke:#cccc00;
+    class constraint motivacion
+    class tramite negocio
+```
+
+La tabla de priorización (Paso 5) es, otra vez, el insumo directo: cada ítem marcado como "Brecha" se convierte en una `Constraint` que restringe al proceso de negocio o al componente de aplicación donde ocurre — y que después, en el Taller 7, origina un `Gap` a cerrar en el TO-BE.
+
+---
+
 _Esta guía hace parte del Taller 6 de Checklist de Cumplimiento Normativo — curso Arquitectura Empresarial, Universidad de La Sabana._
