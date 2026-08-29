@@ -18,8 +18,8 @@ Esta guía complementa el `README.md` del taller. Su objetivo es que, antes de e
 ## 2. Metodología en 5 pasos
 
 1. **Identificar datos y procesos sensibles** — liste qué información procesa el sistema y qué normativa le aplica a cada una.
-2. **Construir el checklist** — agrupe los requisitos a verificar por sección (consentimiento, seguridad, retención, roles/auditoría), basándose en los marcos de la sección 1.
-3. **Evaluar el cumplimiento** — para cada ítem, marque **Cumple**, **Brecha** o **No aplica**, siempre con evidencia o justificación concreta.
+2. **Construir el checklist** — agrupe los requisitos a verificar por categoría (consentimiento, seguridad, protección de datos, prevención de fugas, retención), basándose en los marcos de la sección 1.
+3. **Evaluar el cumplimiento** — para cada ítem, marque **Cumple**, **Parcial**, **Brecha** o **No aplica**, siempre con evidencia o justificación concreta.
 4. **Documentar el riesgo de cada brecha** — explique qué pasa si esa brecha no se corrige (sanción, exposición de datos, pérdida de trazabilidad).
 5. **Priorizar y recomendar** — ordene las brechas por riesgo y proponga una acción correctiva concreta para cada una.
 
@@ -37,53 +37,55 @@ Esta guía complementa el `README.md` del taller. Su objetivo es que, antes de e
 | Certificados digitales | Dato de identidad / autenticación | ISO 27001 (control de accesos) |
 | Trámites y peticiones ciudadanas | Trazabilidad de gestión pública | ISO 27001 (auditoría) |
 
-### Paso 2 — Construir el checklist por sección
+### Paso 2 — Construir el checklist por categoría
 
-| Sección | Ítem |
+| Categoría | Ítem |
 |---|---|
 | Consentimiento | C1: Existe aviso de privacidad accesible antes de recolectar datos |
 | Consentimiento | C2: Se solicita consentimiento explícito para datos sensibles (ej. historial clínico) |
-| Seguridad | S1: Los datos sensibles están cifrados en tránsito y en reposo |
-| Seguridad | S2: Existe un procedimiento documentado de respuesta a incidentes de fuga de datos |
+| Seguridad (ISO 27001) | S1: Los datos sensibles están cifrados en tránsito y en reposo |
+| Seguridad (ISO 27001) | A1: El acceso a datos sensibles está limitado por rol (RBAC) |
+| Protección de Datos | A2: Existe registro de auditoría de quién accede a qué dato y cuándo |
+| Prevención de Fugas | S2: Existe un procedimiento documentado de respuesta a incidentes de fuga de datos |
 | Retención | R1: Existe una política de tiempo de retención y eliminación de datos |
 | Retención | R2: Los datos se eliminan o anonimizan al vencer su finalidad |
-| Roles y auditoría | A1: El acceso a datos sensibles está limitado por rol (RBAC) |
-| Roles y auditoría | A2: Existe registro de auditoría de quién accede a qué dato y cuándo |
 
 ### Paso 3 — Evaluar el cumplimiento
 
-| Ítem | Estado | Evidencia / Justificación |
-|---|---|---|
-| C1 | ✅ Cumple | El portal publica un aviso de privacidad visible antes del registro |
-| C2 | ⚠️ Brecha | El formulario de trámites de salud no pide consentimiento separado para el historial clínico |
-| S1 | ⚠️ Brecha | Los certificados digitales se transmiten sin verificar TLS en todos los subdominios |
-| S2 | ⚠️ Brecha | No existe un procedimiento documentado de respuesta a incidentes |
-| R1 | ⚠️ Brecha | No hay una política de retención publicada |
-| R2 | ⚠️ Brecha | Consecuencia directa de R1: sin política, no hay eliminación programada |
-| A1 | ✅ Cumple | El sistema define roles (ciudadano, funcionario, administrador) |
-| A2 | ⚠️ Brecha | No hay registro visible de auditoría de accesos a historiales clínicos |
+Cada ítem se marca con el nivel de cumplimiento oficial de la plantilla — no son solo dos estados (Cumple / Brecha): existe un tercer estado intermedio, **⚠️ Parcial**, para cuando un control está implementado de forma incompleta y no encaja bien en un Cumple/Brecha estricto (por ejemplo, un control aplicado solo a una parte del sistema):
+
+| N° | Categoría | Criterio de Cumplimiento | Nivel de Cumplimiento | Evidencia / Justificación | Recomendación |
+|---|---|---|---|---|---|
+| 1 | Consentimiento | Existe aviso de privacidad accesible antes de recolectar datos | ✅ Cumple | El portal publica un aviso de privacidad visible antes del registro | Mantenerlo visible y revisarlo ante cambios normativos |
+| 2 | Consentimiento | Se solicita consentimiento explícito para datos sensibles (ej. historial clínico) | ⚠️ Brecha | El formulario de trámites de salud no pide consentimiento separado para el historial clínico | Agregar un consentimiento explícito y separado para historial clínico |
+| 3 | Seguridad (ISO 27001) | Los datos sensibles están cifrados en tránsito y en reposo | ⚠️ Parcial | El cifrado en reposo está implementado, pero los certificados digitales se transmiten sin verificar TLS en todos los subdominios | Forzar TLS en todos los subdominios y auditar certificados |
+| 4 | Seguridad (ISO 27001) | El acceso a datos sensibles está limitado por rol (RBAC) | ✅ Cumple | El sistema define roles (ciudadano, funcionario, administrador) | Revisar la asignación de roles periódicamente |
+| 5 | Protección de Datos | Existe registro de auditoría de quién accede a qué dato y cuándo | ⚠️ Brecha | No hay registro visible de auditoría de accesos a historiales clínicos | Implementar registro de auditoría (logs) de acceso a datos sensibles |
+| 6 | Prevención de Fugas | Existe un procedimiento documentado de respuesta a incidentes de fuga de datos | ⚠️ Brecha | No existe un procedimiento documentado de respuesta a incidentes | Documentar procedimiento de respuesta a incidentes de fuga de datos |
+| 7 | Retención | Existe una política de tiempo de retención y eliminación de datos | ⚠️ Brecha | No hay una política de retención publicada | Definir y publicar política de retención y eliminación |
+| 8 | Retención | Los datos se eliminan o anonimizan al vencer su finalidad | ⚠️ Brecha | Consecuencia directa del ítem 7: sin política, no hay eliminación programada | Automatizar la eliminación/anonimización una vez definida la política |
 
 ### Paso 4 — Documentar el riesgo de cada brecha
 
-| Ítem | Riesgo si no se corrige |
-|---|---|
-| C2 | Sanción de la SIC por tratamiento de datos sensibles sin consentimiento explícito (Ley 1581) |
-| S1 | Exposición de certificados digitales y posible suplantación de identidad ciudadana |
-| S2 | Respuesta lenta y desordenada ante una fuga real, agravando el impacto |
-| R1 / R2 | Acumulación indefinida de datos sensibles, incumpliendo el principio de finalidad de la Ley 1581 |
-| A2 | Imposibilidad de demostrar cumplimiento ante una auditoría o investigación de la SIC |
+| N° | Categoría | Riesgo si no se corrige |
+|---|---|---|
+| 2 | Consentimiento | Sanción de la SIC por tratamiento de datos sensibles sin consentimiento explícito (Ley 1581) |
+| 3 | Seguridad (ISO 27001) | Exposición de certificados digitales y posible suplantación de identidad ciudadana mientras el cifrado en tránsito no cubra todos los subdominios |
+| 5 | Protección de Datos | Imposibilidad de demostrar cumplimiento ante una auditoría o investigación de la SIC |
+| 6 | Prevención de Fugas | Respuesta lenta y desordenada ante una fuga real, agravando el impacto |
+| 7 / 8 | Retención | Acumulación indefinida de datos sensibles, incumpliendo el principio de finalidad de la Ley 1581 |
 
 ### Paso 5 — Priorizar y recomendar
 
-Esta es la tabla final que se entrega como `checklist-cliente.xlsx`, ordenada de mayor a menor prioridad:
+Esta es la tabla final que se entrega como `checklist-cliente.xlsx`, con la misma estructura de la hoja **Brechas Identificadas** de la plantilla oficial, ordenada de mayor a menor prioridad:
 
-| Prioridad | Ítem | Estado | Riesgo | Recomendación |
+| Categoría | Brecha | Riesgo | Recomendación Prioritaria | Nivel de Prioridad |
 |---|---|---|---|---|
-| 1 | C2 | Brecha | Sanción legal por dato sensible sin consentimiento | Agregar un consentimiento explícito y separado para historial clínico |
-| 2 | S1 | Brecha | Exposición de datos de identidad | Forzar TLS en todos los subdominios y auditar certificados |
-| 3 | A2 | Brecha | Sin trazabilidad ante auditoría | Implementar registro de auditoría (logs) de acceso a datos sensibles |
-| 4 | R1 / R2 | Brecha | Retención indefinida de datos | Definir y publicar política de retención y eliminación |
-| 5 | S2 | Brecha | Respuesta desordenada ante incidentes | Documentar procedimiento de respuesta a incidentes de fuga de datos |
+| Consentimiento | No se solicita consentimiento explícito y separado para datos sensibles (historial clínico) | Sanción legal por tratamiento de dato sensible sin consentimiento (Ley 1581) | Agregar un consentimiento explícito y separado para historial clínico | Alta |
+| Seguridad (ISO 27001) | El cifrado en tránsito no se verifica ni se fuerza en todos los subdominios (TLS parcial) | Exposición de certificados digitales y posible suplantación de identidad ciudadana | Forzar TLS en todos los subdominios y auditar certificados | Alta |
+| Protección de Datos | No hay registro visible de auditoría de accesos a historiales clínicos | Sin trazabilidad ante auditoría | Implementar registro de auditoría (logs) de acceso a datos sensibles | Alta |
+| Retención | No existe política de retención ni eliminación/anonimización programada de datos | Retención indefinida de datos, incumpliendo el principio de finalidad de la Ley 1581 | Definir y publicar política de retención y eliminación | Media |
+| Prevención de Fugas | No existe un procedimiento documentado de respuesta a incidentes de fuga de datos | Respuesta desordenada ante incidentes | Documentar procedimiento de respuesta a incidentes de fuga de datos | Media |
 
 ---
 
@@ -100,8 +102,8 @@ Esta es la tabla final que se entrega como `checklist-cliente.xlsx`, ordenada de
 
 ## 5. Checklist de autoevaluación antes de entregar
 
-- [ ] Cada ítem está evaluado como Cumple, Brecha o No aplica, con evidencia o justificación.
-- [ ] Los ítems están organizados por sección (consentimiento, seguridad, retención, roles, etc.).
+- [ ] Cada ítem está evaluado como Cumple, Parcial, Brecha o No aplica, con evidencia o justificación.
+- [ ] Los ítems están organizados por categoría (consentimiento, seguridad, protección de datos, prevención de fugas, retención, etc.).
 - [ ] Cada brecha tiene un riesgo legal/operativo explicado, no solo "no cumple".
 - [ ] Se investigaron normativas sectoriales adicionales aplicables al cliente.
 - [ ] Las brechas están priorizadas y cada una tiene una recomendación correctiva concreta.

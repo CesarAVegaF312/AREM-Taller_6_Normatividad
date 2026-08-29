@@ -34,8 +34,8 @@ Durante la clase se espera que el equipo:
 Siga la metodología de 5 pasos de la [guía paso a paso](clase/guia_paso_a_paso_normatividad.md) para evaluar el cumplimiento normativo de GobData:
 
 1. Identifique los datos y procesos sensibles del sistema y la normativa aplicable a cada uno.
-2. Construya el checklist agrupando los ítems por sección (consentimiento, seguridad, retención, roles/auditoría).
-3. Evalúe cada ítem como Cumple, Brecha o No aplica, con evidencia o justificación.
+2. Construya el checklist agrupando los ítems por categoría (consentimiento, seguridad, protección de datos, prevención de fugas, retención).
+3. Evalúe cada ítem como Cumple, Parcial, Brecha o No aplica, con evidencia o justificación.
 4. Documente el riesgo legal u operativo de cada brecha.
 5. Priorice las brechas y proponga una recomendación para cada una; valide con la [checklist de autoevaluación](clase/guia_paso_a_paso_normatividad.md#5-checklist-de-autoevaluación-antes-de-entregar).
 
@@ -61,13 +61,14 @@ taller-06-normatividad/
 ├── README.md
 ├── clase/
 │   ├── guia_paso_a_paso_normatividad.md   # Marcos normativos, metodología de 5 pasos y ejemplo guiado
-│   ├── checklist-gobdata.xlsx
+│   ├── checklist-gobdata.xlsx             # Checklist oficial (hojas Checklist General y Brechas Identificadas)
 │   └── notas.md                           # Ver plantillas/plantilla_notas.md
 ├── entrega/
 │   ├── checklist-cliente.xlsx
 │   ├── informe.md                         # Ver plantillas/plantilla_informe_taller.md
 │   └── referencias.md                     # Ver plantillas/plantilla_referencias.md
 └── plantillas/
+    ├── plantilla_checklist.xlsx           # Plantilla oficial en blanco, misma estructura que checklist-gobdata.xlsx
     ├── plantilla_informe_taller.md
     ├── plantilla_notas.md
     └── plantilla_referencias.md
