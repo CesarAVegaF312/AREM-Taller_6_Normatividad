@@ -143,8 +143,7 @@
       <a href="#marcos">Marcos normativos</a>
       <a href="#metodologia">Metodología</a>
       <a href="#checklist">Checklist interactivo</a>
-      <a href="#riesgo">Riesgo por brecha</a>
-      <a href="#priorizacion">Priorización final</a>
+      <a href="#priorizacion">Brechas Identificadas</a>
       <a href="#errores">Errores comunes</a>
     </nav>
   </div>
@@ -155,7 +154,7 @@
   <section class="hero">
     <p class="ref">Universidad de La Sabana · Arquitectura Empresarial</p>
     <h1>Cumplir la ley no es marcar una casilla, es sostener una evidencia.</h1>
-    <p class="lede">Un checklist de cumplimiento normativo no distingue solo entre "sí" y "no": cada ítem necesita una evidencia concreta, y cada brecha necesita un riesgo legal explicado y una recomendación que la cierre. Esta hoja aplica esa disciplina al caso de GobData, un portal de trámites ciudadanos sujeto a Habeas Data (Ley 1581 de 2012) e ISO/IEC 27001. Empiece por el checklist interactivo: haga clic en cualquier ítem para ver la evidencia real encontrada, el riesgo si es una brecha, y la recomendación.</p>
+    <p class="lede">Un checklist de cumplimiento normativo no distingue solo entre "sí" y "no": cada ítem necesita una evidencia concreta, y cada incumplimiento real necesita un riesgo explicado y una recomendación que lo cierre. Esta hoja aplica esa disciplina al caso de GobData, un portal de trámites ciudadanos sujeto a Habeas Data (Ley 1581 de 2012) e ISO/IEC 27001. Empiece por el checklist interactivo: haga clic en cualquier ítem para ver la evidencia real encontrada, la recomendación, y — si es un ítem Parcial — el riesgo de la brecha que genera.</p>
   </section>
 
   <!-- ============ MARCOS NORMATIVOS ============ -->
@@ -188,9 +187,9 @@
       <p class="lede" style="margin-bottom:18px">De identificar qué dato es sensible a entregar una tabla priorizada de brechas. Saltarse un paso — evaluar sin evidencia, o priorizar sin explicar el riesgo — es lo que vuelve un checklist en papel mojado.</p>
       <div class="steps">
         <div class="step"><span class="n">Paso 1</span><div><h3>Identificar datos y procesos sensibles</h3><p>Liste qué información procesa el sistema y qué normativa le aplica a cada una.</p></div></div>
-        <div class="step"><span class="n">Paso 2</span><div><h3>Construir el checklist</h3><p>Agrupe los requisitos a verificar por categoría — consentimiento, seguridad, protección de datos, prevención de fugas, retención — basándose en los marcos de la sección anterior.</p></div></div>
-        <div class="step"><span class="n">Paso 3</span><div><h3>Evaluar el cumplimiento</h3><p>Para cada ítem, marque Cumple, Parcial, Brecha o No aplica, siempre con evidencia o justificación concreta.</p></div></div>
-        <div class="step"><span class="n">Paso 4</span><div><h3>Documentar el riesgo de cada brecha</h3><p>Explique qué pasa si esa brecha no se corrige: sanción, exposición de datos, pérdida de trazabilidad.</p></div></div>
+        <div class="step"><span class="n">Paso 2</span><div><h3>Construir el checklist</h3><p>Agrupe los requisitos a verificar por categoría — consentimiento, seguridad, protección de datos, prevención de fugas, retención, roles y responsabilidades — basándose en los marcos de la sección anterior.</p></div></div>
+        <div class="step"><span class="n">Paso 3</span><div><h3>Evaluar el cumplimiento</h3><p>Para cada ítem, marque Cumple o Parcial — la plantilla oficial solo tiene estos dos estados —, siempre con evidencia o justificación concreta.</p></div></div>
+        <div class="step"><span class="n">Paso 4</span><div><h3>Documentar el riesgo de cada brecha</h3><p>"Brecha" no es un tercer estado: cada ítem Parcial se registra como una fila aparte en la hoja Brechas Identificadas, explicando qué pasa si no se corrige y con qué nivel de riesgo.</p></div></div>
         <div class="step"><span class="n">Paso 5</span><div><h3>Priorizar y recomendar</h3><p>Ordene las brechas por riesgo y proponga una acción correctiva concreta para cada una.</p></div></div>
       </div>
 
@@ -215,7 +214,7 @@
     <div class="sheet-inner">
       <p class="ref">03 · El diagnóstico</p>
       <h2>Checklist de cumplimiento de GobData</h2>
-      <p class="lede" style="margin-bottom:16px">Ocho ítems, cuatro categorías, cuatro niveles de cumplimiento posibles. La matriz da la vista rápida; el panel de abajo da la evidencia, el riesgo y la recomendación de cada ítem.</p>
+      <p class="lede" style="margin-bottom:16px">Doce ítems, seis categorías, dos niveles de cumplimiento posibles — la plantilla oficial no tiene más estados. La matriz da la vista rápida; el panel de abajo da la evidencia y la recomendación de cada ítem, y para los ítems Parcial, además el riesgo derivado.</p>
 
       <div class="tblwrap">
         <table class="matrix">
@@ -228,58 +227,35 @@
       <div class="legend">
         <span><span class="sw yes"></span>Cumple</span>
         <span><span class="sw maybe"></span>Parcial</span>
-        <span><span class="sw gap"></span>Brecha</span>
-        <span><span class="sw no"></span>No aplica</span>
       </div>
 
-      <h3 style="margin:28px 0 10px">Evidencia, riesgo y recomendación por ítem</h3>
-      <p class="note" style="margin-bottom:12px">Seleccione un ítem para ver exactamente lo que se encontró al evaluarlo — nunca una opinión sin sustento.</p>
+      <h3 style="margin:28px 0 10px">Evidencia y recomendación por ítem</h3>
+      <p class="note" style="margin-bottom:12px">Seleccione un ítem para ver exactamente lo que se encontró al evaluarlo — nunca una opinión sin sustento. Los ítems Parcial muestran además el riesgo y la recomendación prioritaria de la brecha que generan en la hoja Brechas Identificadas.</p>
       <div class="chain" role="group" aria-label="Ítems del checklist" id="itemChain"></div>
       <div class="chaindetail" id="itemDetail"></div>
-    </div>
-  </section>
-
-  <!-- ============ RIESGO POR BRECHA ============ -->
-  <section class="sheet" id="riesgo">
-    <div class="sheet-inner">
-      <p class="ref">04 · Por qué importa</p>
-      <h2>Riesgo de cada brecha</h2>
-      <p class="lede" style="margin-bottom:18px">Marcar "Brecha" no basta: cada una necesita su consecuencia explícita — sanción, exposición o pérdida de trazabilidad — para que el cliente entienda qué se juega si no se corrige.</p>
-      <div class="tblwrap">
-        <table>
-          <thead><tr><th style="width:8%">N°</th><th style="width:22%">Categoría</th><th>Riesgo si no se corrige</th></tr></thead>
-          <tbody>
-            <tr><td>2</td><td>Consentimiento</td><td>Sanción de la SIC por tratamiento de datos sensibles sin consentimiento explícito (Ley 1581)</td></tr>
-            <tr><td>3</td><td>Seguridad (ISO 27001)</td><td>Exposición de certificados digitales y posible suplantación de identidad ciudadana mientras el cifrado en tránsito no cubra todos los subdominios</td></tr>
-            <tr><td>5</td><td>Protección de Datos</td><td>Imposibilidad de demostrar cumplimiento ante una auditoría o investigación de la SIC</td></tr>
-            <tr><td>6</td><td>Prevención de Fugas</td><td>Respuesta lenta y desordenada ante una fuga real, agravando el impacto</td></tr>
-            <tr><td>7 / 8</td><td>Retención</td><td>Acumulación indefinida de datos sensibles, incumpliendo el principio de finalidad de la Ley 1581</td></tr>
-          </tbody>
-        </table>
-      </div>
     </div>
   </section>
 
   <!-- ============ PRIORIZACIÓN FINAL ============ -->
   <section class="sheet" id="priorizacion">
     <div class="sheet-inner">
-      <p class="ref">05 · El entregable</p>
-      <h2>Tabla final priorizada</h2>
-      <p class="lede" style="margin-bottom:18px">Esta es la tabla que se entrega como <code>checklist-cliente.xlsx</code>, con la misma estructura de la hoja <strong>Brechas Identificadas</strong> de la plantilla oficial, ordenada de mayor a menor prioridad.</p>
+      <p class="ref">04 · El entregable</p>
+      <h2>Brechas Identificadas: tabla final priorizada</h2>
+      <p class="lede" style="margin-bottom:18px">"Brecha" no es un estado del checklist — es esta tabla derivada aparte, construida a partir de los ítems marcados Parcial. Esta es la que se entrega como <code>checklist-cliente.xlsx</code>, con la misma estructura de la hoja <strong>Brechas Identificadas</strong> de la plantilla oficial.</p>
       <div class="tblwrap">
         <table>
-          <thead><tr><th style="width:16%">Categoría</th><th style="width:26%">Brecha</th><th style="width:24%">Riesgo</th><th style="width:24%">Recomendación prioritaria</th><th style="width:10%">Prioridad</th></tr></thead>
+          <thead><tr><th style="width:16%">Categoría</th><th style="width:26%">Brecha</th><th style="width:14%">Riesgo</th><th style="width:34%">Recomendación prioritaria</th><th style="width:10%">Prioridad</th></tr></thead>
           <tbody>
-            <tr><td>Consentimiento</td><td>No se solicita consentimiento explícito y separado para datos sensibles (historial clínico)</td><td>Sanción legal por tratamiento de dato sensible sin consentimiento (Ley 1581)</td><td>Agregar un consentimiento explícito y separado para historial clínico</td><td><strong>Alta</strong></td></tr>
-            <tr><td>Seguridad (ISO 27001)</td><td>El cifrado en tránsito no se verifica ni se fuerza en todos los subdominios (TLS parcial)</td><td>Exposición de certificados digitales y posible suplantación de identidad ciudadana</td><td>Forzar TLS en todos los subdominios y auditar certificados</td><td><strong>Alta</strong></td></tr>
-            <tr><td>Protección de Datos</td><td>No hay registro visible de auditoría de accesos a historiales clínicos</td><td>Sin trazabilidad ante auditoría</td><td>Implementar registro de auditoría (logs) de acceso a datos sensibles</td><td><strong>Alta</strong></td></tr>
-            <tr><td>Retención</td><td>No existe política de retención ni eliminación/anonimización programada de datos</td><td>Retención indefinida de datos, incumpliendo el principio de finalidad de la Ley 1581</td><td>Definir y publicar política de retención y eliminación</td><td>Media</td></tr>
-            <tr><td>Prevención de Fugas</td><td>No existe un procedimiento documentado de respuesta a incidentes de fuga de datos</td><td>Respuesta desordenada ante incidentes</td><td>Documentar procedimiento de respuesta a incidentes de fuga de datos</td><td>Media</td></tr>
+            <tr><td>Consentimiento</td><td>No existe mecanismo automático de revocatoria.</td><td>Medio</td><td>Crear funcionalidad de eliminación y revocatoria digital.</td><td><strong>Alta</strong></td></tr>
+            <tr><td>Seguridad</td><td>No hay plan formal de continuidad (BCP/DRP).</td><td>Alto</td><td>Diseñar, probar e implementar plan de continuidad.</td><td><strong>Alta</strong></td></tr>
+            <tr><td>Prevención de Fugas</td><td>Exportación manual no controlada.</td><td>Alto</td><td>Implementar DLP para controlar descargas y exportaciones.</td><td><strong>Alta</strong></td></tr>
+            <tr><td>Retención</td><td>No existe eliminación automatizada.</td><td>Medio</td><td>Configurar reglas de caducidad en base de datos.</td><td>Media</td></tr>
+            <tr><td>Formación</td><td>Sin evaluación de efectividad.</td><td>Bajo</td><td>Aplicar pruebas posteriores a capacitación.</td><td>Media</td></tr>
           </tbody>
         </table>
       </div>
       <div class="callout" style="margin-top:20px">
-        <p><strong>Lo que hace priorizable a una brecha:</strong> no es solo la gravedad del riesgo — es también qué tan barato es cerrarla y a cuánta gente expone mientras siga abierta. Las tres brechas en Alta comparten algo: tienen sanción legal directa (SIC) o exponen datos de salud, el tipo de dato con tratamiento reforzado bajo la Ley 1581.</p>
+        <p><strong>Lo que hace priorizable a una brecha:</strong> no es solo la gravedad del riesgo — es también qué tan barato es cerrarla y a cuánta gente expone mientras siga abierta. Las dos brechas en Alto riesgo (continuidad y prevención de fugas) comparten prioridad Alta con la de consentimiento porque su impacto es amplio o su corrección es sencilla y urgente.</p>
       </div>
     </div>
   </section>
@@ -287,28 +263,28 @@
   <!-- ============ ERRORES COMUNES ============ -->
   <section class="sheet" id="errores">
     <div class="sheet-inner">
-      <p class="ref">06 · Antes de entregar</p>
+      <p class="ref">05 · Antes de entregar</p>
       <h2>Errores comunes a evitar</h2>
       <div class="tblwrap">
         <table>
           <thead><tr><th style="width:28%">Error frecuente</th><th style="width:34%">Por qué es un problema</th><th>Cómo corregirlo</th></tr></thead>
           <tbody>
             <tr><td>Marcar "Cumple" sin evidencia concreta</td><td>El checklist se vuelve una opinión, no una auditoría verificable</td><td>Cite dónde se observa el cumplimiento (documento, pantalla, configuración)</td></tr>
-            <tr><td>Usar "No aplica" para evitar analizar un ítem incómodo</td><td>Oculta brechas reales en vez de documentarlas</td><td>Solo use "No aplica" cuando el sistema genuinamente no procesa ese tipo de dato/proceso</td></tr>
+            <tr><td>Confundir "Parcial" con "Brecha"</td><td>"Brecha" no es un estado que se marca en el checklist: es la tabla derivada que documenta el riesgo de cada incumplimiento real</td><td>Marque el ítem como Parcial en el Checklist General y registre la brecha, con su riesgo, en la hoja Brechas Identificadas</td></tr>
             <tr><td>Copiar el checklist genérico sin adaptarlo al sector del cliente</td><td>Ignora normativas sectoriales específicas (salud, educación, finanzas)</td><td>Investigue y agregue normativas propias del sector del cliente (MinSalud, MinTIC, SuperSalud, SFC, etc.)</td></tr>
-            <tr><td>Recomendaciones sin relación con la brecha encontrada</td><td>El informe pierde utilidad práctica para el cliente</td><td>Cada recomendación debe corregir directamente el ítem marcado como brecha</td></tr>
+            <tr><td>Recomendaciones sin relación con la brecha encontrada</td><td>El informe pierde utilidad práctica para el cliente</td><td>Cada recomendación debe corregir directamente el ítem registrado en la hoja de Brechas Identificadas</td></tr>
           </tbody>
         </table>
       </div>
       <div class="callout" style="margin-top:20px">
-        <p><strong>Regla que no se negocia:</strong> ninguna fila de este checklist se marca sola. "Cumple" sin evidencia y "No aplica" sin justificación valen lo mismo que una fila en blanco — nada.</p>
+        <p><strong>Regla que no se negocia:</strong> ninguna fila de este checklist se marca sola. "Cumple" o "Parcial" sin evidencia valen lo mismo que una fila en blanco — nada.</p>
       </div>
     </div>
   </section>
 
   <section class="sheet">
     <div class="sheet-inner">
-      <p class="ref">07 · Para seguir</p>
+      <p class="ref">06 · Para seguir</p>
       <h2>Fuentes</h2>
       <ul class="srcs">
         <li>Ley 1581 de 2012 — Régimen general de protección de datos personales en Colombia (Habeas Data).</li>
@@ -332,57 +308,71 @@
 function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
 /* ============================================================
-   Los 8 ítems del checklist de GobData — evidencia real, riesgo
-   y recomendación tal como quedaron en la guía paso a paso.
+   Los 12 ítems de la hoja "Checklist General" de GobData — solo
+   dos niveles posibles (Cumple / Parcial), tal como en la plantilla
+   oficial. Los ítems Parcial llevan además el riesgo y la
+   recomendación prioritaria de su fila correspondiente en la hoja
+   "Brechas Identificadas" (información derivada, no del checklist).
    ============================================================ */
 const LEVELS = {
   cumple:  {mark:"C", cls:"yes",   label:"Cumple"},
-  parcial: {mark:"P", cls:"maybe", label:"Parcial"},
-  brecha:  {mark:"B", cls:"gap",   label:"Brecha"},
-  na:      {mark:"·", cls:"no",    label:"No aplica"}
+  parcial: {mark:"P", cls:"maybe", label:"Parcial"}
 };
 
 const ITEMS = [
-  {n:1, code:"C1", cat:"Consentimiento", crit:"Existe aviso de privacidad accesible antes de recolectar datos",
-   short:"Aviso de privacidad", level:"cumple",
-   ev:"El portal publica un aviso de privacidad visible antes del registro.",
-   risk:null,
-   rec:"Mantenerlo visible y revisarlo ante cambios normativos."},
-  {n:2, code:"C2", cat:"Consentimiento", crit:"Se solicita consentimiento explícito para datos sensibles (ej. historial clínico)",
-   short:"Consentimiento para datos sensibles", level:"brecha",
-   ev:"El formulario de trámites de salud no pide consentimiento separado para el historial clínico.",
-   risk:"Sanción de la SIC por tratamiento de datos sensibles sin consentimiento explícito (Ley 1581).",
-   rec:"Agregar un consentimiento explícito y separado para historial clínico."},
-  {n:3, code:"S1", cat:"Seguridad (ISO 27001)", crit:"Los datos sensibles están cifrados en tránsito y en reposo",
-   short:"Cifrado en tránsito y reposo", level:"parcial",
-   ev:"El cifrado en reposo está implementado, pero los certificados digitales se transmiten sin verificar TLS en todos los subdominios.",
-   risk:"Exposición de certificados digitales y posible suplantación de identidad ciudadana mientras el cifrado en tránsito no cubra todos los subdominios.",
-   rec:"Forzar TLS en todos los subdominios y auditar certificados."},
-  {n:4, code:"A1", cat:"Seguridad (ISO 27001)", crit:"El acceso a datos sensibles está limitado por rol (RBAC)",
-   short:"Control de acceso por rol", level:"cumple",
-   ev:"El sistema define roles (ciudadano, funcionario, administrador).",
-   risk:null,
-   rec:"Revisar la asignación de roles periódicamente."},
-  {n:5, code:"A2", cat:"Protección de Datos", crit:"Existe registro de auditoría de quién accede a qué dato y cuándo",
-   short:"Auditoría de accesos", level:"brecha",
-   ev:"No hay registro visible de auditoría de accesos a historiales clínicos.",
-   risk:"Imposibilidad de demostrar cumplimiento ante una auditoría o investigación de la SIC.",
-   rec:"Implementar registro de auditoría (logs) de acceso a datos sensibles."},
-  {n:6, code:"S2", cat:"Prevención de Fugas", crit:"Existe un procedimiento documentado de respuesta a incidentes de fuga de datos",
-   short:"Respuesta a incidentes de fuga", level:"brecha",
-   ev:"No existe un procedimiento documentado de respuesta a incidentes.",
-   risk:"Respuesta lenta y desordenada ante una fuga real, agravando el impacto.",
-   rec:"Documentar procedimiento de respuesta a incidentes de fuga de datos."},
-  {n:7, code:"R1", cat:"Retención", crit:"Existe una política de tiempo de retención y eliminación de datos",
-   short:"Política de retención", level:"brecha",
-   ev:"No hay una política de retención publicada.",
-   risk:"Acumulación indefinida de datos sensibles, incumpliendo el principio de finalidad de la Ley 1581 (riesgo compartido con el ítem 8).",
-   rec:"Definir y publicar política de retención y eliminación."},
-  {n:8, code:"R2", cat:"Retención", crit:"Los datos se eliminan o anonimizan al vencer su finalidad",
-   short:"Eliminación / anonimización", level:"brecha",
-   ev:"Consecuencia directa del ítem 7: sin política, no hay eliminación programada.",
-   risk:"Acumulación indefinida de datos sensibles, incumpliendo el principio de finalidad de la Ley 1581 (mismo riesgo del ítem 7).",
-   rec:"Automatizar la eliminación/anonimización una vez definida la política."}
+  {n:1, cat:"Consentimiento", crit:"Se solicita consentimiento informado al ciudadano antes del tratamiento de datos.",
+   short:"Consentimiento informado", level:"cumple",
+   ev:"Casilla de aceptación de términos en el registro de usuario.",
+   rec:"Detallar fines específicos del tratamiento."},
+  {n:2, cat:"Consentimiento", crit:"Mecanismo para revocar el consentimiento disponible.",
+   short:"Revocatoria del consentimiento", level:"parcial",
+   ev:"Solo mediante solicitud escrita.",
+   rec:"Implementar botón o formulario en línea.",
+   gap:{riesgo:"Medio", brecha:"No existe mecanismo automático de revocatoria.", recPrioritaria:"Crear funcionalidad de eliminación y revocatoria digital.", prioridad:"Alta"}},
+  {n:3, cat:"Seguridad (ISO 27001)", crit:"Existe política formal de seguridad.",
+   short:"Política formal de seguridad", level:"cumple",
+   ev:"Política de TI estatal basada en ISO/IEC 27001:2013.",
+   rec:"Mantenerla actualizada conforme a versión 2022."},
+  {n:4, cat:"Seguridad (ISO 27001)", crit:"Cifrado de datos en tránsito y reposo.",
+   short:"Cifrado en tránsito y reposo", level:"cumple",
+   ev:"HTTPS/TLS y cifrado de campos sensibles.",
+   rec:"Revisar certificados y algoritmos anualmente."},
+  {n:5, cat:"Seguridad (ISO 27001)", crit:"Plan de continuidad y recuperación.",
+   short:"Plan de continuidad (BCP/DRP)", level:"parcial",
+   ev:"Respaldos diarios sin plan BCP/DRP formal.",
+   rec:"Diseñar e implementar plan de continuidad documentado.",
+   gap:{riesgo:"Alto", brecha:"No hay plan formal de continuidad (BCP/DRP).", recPrioritaria:"Diseñar, probar e implementar plan de continuidad.", prioridad:"Alta"}},
+  {n:6, cat:"Protección de Datos", crit:"Se cuenta con un Oficial de Protección de Datos (DPO).",
+   short:"Oficial de Protección de Datos", level:"cumple",
+   ev:"Funcionario asignado conforme a Ley 1581.",
+   rec:"Reforzar su rol en auditorías y reportes."},
+  {n:7, cat:"Protección de Datos", crit:"Logs de acceso a información personal.",
+   short:"Logs de acceso", level:"cumple",
+   ev:"Sistema registra y audita consultas.",
+   rec:"Revisar integridad y retención de logs."},
+  {n:8, cat:"Prevención de Fugas", crit:"Se controlan exportaciones manuales.",
+   short:"Control de exportaciones manuales", level:"parcial",
+   ev:"No hay controles DLP.",
+   rec:"Implementar políticas y herramientas DLP.",
+   gap:{riesgo:"Alto", brecha:"Exportación manual no controlada.", recPrioritaria:"Implementar DLP para controlar descargas y exportaciones.", prioridad:"Alta"}},
+  {n:9, cat:"Retención", crit:"Política formal de retención de datos.",
+   short:"Política de retención", level:"cumple",
+   ev:"Cumple con Ley General de Archivos.",
+   rec:"Automatizar procesos de eliminación."},
+  {n:10, cat:"Retención", crit:"Datos sensibles se anonimizarán cuando dejen de ser necesarios.",
+   short:"Anonimización de datos sensibles", level:"parcial",
+   ev:"No hay proceso implementado.",
+   rec:"Desarrollar política de anonimización.",
+   gap:{riesgo:"Medio", brecha:"No existe eliminación automatizada.", recPrioritaria:"Configurar reglas de caducidad en base de datos.", prioridad:"Media"}},
+  {n:11, cat:"Roles y Responsabilidades", crit:"Roles y permisos documentados.",
+   short:"Roles y permisos documentados", level:"cumple",
+   ev:"Manual de seguridad define roles (dueño, custodio, usuario).",
+   rec:"Actualizar trimestralmente."},
+  {n:12, cat:"Roles y Responsabilidades", crit:"Formación del personal en protección de datos.",
+   short:"Formación del personal", level:"parcial",
+   ev:"Capacitación anual sin evaluación.",
+   rec:"Medir efectividad y reforzar entrenamiento.",
+   gap:{riesgo:"Bajo", brecha:"Sin evaluación de efectividad.", recPrioritaria:"Aplicar pruebas posteriores a capacitación.", prioridad:"Media"}}
 ];
 
 /* ---------- matriz ---------- */
@@ -400,7 +390,7 @@ ITEMS.forEach((it,i)=>{
   const b = document.createElement("button");
   b.type = "button";
   b.setAttribute("aria-pressed", String(i===0));
-  b.innerHTML = `<span class="cn">${esc(it.code)} · ${esc(it.cat)}</span><span class="ct">${esc(it.short)}</span>`;
+  b.innerHTML = `<span class="cn">N° ${it.n} · ${esc(it.cat)}</span><span class="ct">${esc(it.short)}</span>`;
   b.addEventListener("click", ()=>{
     [...chain.children].forEach(c=>c.setAttribute("aria-pressed","false"));
     b.setAttribute("aria-pressed","true");
@@ -412,14 +402,19 @@ ITEMS.forEach((it,i)=>{
 function showItem(i){
   const it = ITEMS[i];
   const lv = LEVELS[it.level];
-  let h = `<p class="flowtitle">${esc(it.code)} · ${esc(it.cat)} · Ítem ${it.n} de 8</p>
+  let h = `<p class="flowtitle">Ítem ${it.n} de 12 · ${esc(it.cat)}</p>
     <h3>${esc(it.crit)}</h3>
     <p><span class="pill ${lv.cls}">${lv.label}</span></p>
-    <p class="ex">Evidencia · ${esc(it.ev)}</p>`;
-  if(it.risk){
-    h += `<p class="risk">Riesgo · ${esc(it.risk)}</p>`;
+    <p class="ex">Evidencia / Justificación · ${esc(it.ev)}</p>
+    <p class="ctrl">Recomendación · ${esc(it.rec)}</p>`;
+  if(it.gap){
+    h += `<div class="callout" style="margin-top:6px">
+        <p><strong>Derivado a Brechas Identificadas</strong> — este ítem Parcial genera la siguiente fila en esa hoja:</p>
+        <p style="margin-top:8px">Brecha · ${esc(it.gap.brecha)}</p>
+        <p>Riesgo · ${esc(it.gap.riesgo)} &nbsp;·&nbsp; Prioridad · ${esc(it.gap.prioridad)}</p>
+        <p>Recomendación prioritaria · ${esc(it.gap.recPrioritaria)}</p>
+      </div>`;
   }
-  h += `<p class="ctrl">Recomendación · ${esc(it.rec)}</p>`;
   document.getElementById("itemDetail").innerHTML = h;
 }
 showItem(0);

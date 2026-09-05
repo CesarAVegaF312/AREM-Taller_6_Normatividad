@@ -12,7 +12,7 @@ Antes de diligenciar el checklist, revise la [**Guía Paso a Paso: Checklist de 
 
 ### 🖼️ Versión visual: Checklist de Cumplimiento Normativo
 
-[`clase/visualizacion-normatividad.html`](clase/visualizacion-normatividad.html) es una página interactiva autocontenida: la matriz de los 8 ítems del checklist de GobData con su nivel de cumplimiento (Cumple / Parcial / Brecha / No aplica), un panel clickeable por ítem que muestra la evidencia real encontrada, el riesgo legal si es una brecha y la recomendación, la tabla de riesgo por brecha, la tabla final priorizada que se entrega como `checklist-cliente.xlsx`, la metodología de 5 pasos y los errores comunes a evitar. GitHub no la renderiza interactiva desde la vista de archivo; para verla:
+[`clase/visualizacion-normatividad.html`](clase/visualizacion-normatividad.html) es una página interactiva autocontenida: la matriz de los 12 ítems del checklist de GobData con su nivel de cumplimiento (Cumple / Parcial), un panel clickeable por ítem que muestra la evidencia real encontrada y la recomendación (y, si es un ítem Parcial, el riesgo y la recomendación prioritaria de la brecha derivada), la tabla derivada de Brechas Identificadas con su riesgo y prioridad, la metodología de 5 pasos y los errores comunes a evitar. GitHub no la renderiza interactiva desde la vista de archivo; para verla:
 - Descargue el archivo y ábralo con doble clic (funciona sin conexión, es HTML plano), o
 - Pegue esta URL en [htmlpreview.github.io](https://htmlpreview.github.io/): `https://raw.githubusercontent.com/CesarAVegaF312/AREM-Taller_6_Normatividad/main/clase/visualizacion-normatividad.html`
 
@@ -41,7 +41,7 @@ Siga la metodología de 5 pasos de la [guía paso a paso](clase/guia_paso_a_paso
 
 1. Identifique los datos y procesos sensibles del sistema y la normativa aplicable a cada uno.
 2. Construya el checklist agrupando los ítems por categoría (consentimiento, seguridad, protección de datos, prevención de fugas, retención).
-3. Evalúe cada ítem como Cumple, Parcial, Brecha o No aplica, con evidencia o justificación.
+3. Evalúe cada ítem como Cumple o Parcial, con evidencia; registre cada incumplimiento real como una fila en la tabla de Brechas Identificadas, con su riesgo.
 4. Documente el riesgo legal u operativo de cada brecha.
 5. Priorice las brechas y proponga una recomendación para cada una; valide con la [checklist de autoevaluación](clase/guia_paso_a_paso_normatividad.md#5-checklist-de-autoevaluación-antes-de-entregar).
 
@@ -54,7 +54,7 @@ Siga la metodología de 5 pasos de la [guía paso a paso](clase/guia_paso_a_paso
 Después de la clase, el equipo debe:
 
 - Aplicar el mismo checklist al sistema del cliente, siguiendo los mismos 5 pasos de la metodología (`entrega/checklist-cliente.xlsx`).
-- Indicar los elementos que cumplen, los que tienen brechas y los que no aplican, con su riesgo y prioridad.
+- Indicar los elementos que cumplen y los que están en Parcial, registrando cada incumplimiento real en la tabla de Brechas Identificadas, con su riesgo y prioridad.
 - Redactar el informe en `entrega/informe.md` usando la [plantilla de informe del taller](plantillas/plantilla_informe_taller.md), con recomendaciones concretas para cada brecha.
 - Investigar normativas locales o sectoriales que impacten a su cliente (por ejemplo, MinSalud, MinTIC, SuperSalud, SFC), y registrar las fuentes en `entrega/referencias.md` con la [plantilla de referencias](plantillas/plantilla_referencias.md).
 
@@ -84,7 +84,7 @@ taller-06-normatividad/
 
 ## ⚠️ Errores comunes
 
-Antes de entregar, compare su checklist contra los errores más frecuentes (ítems "Cumple" sin evidencia, brechas marcadas como "No aplica", recomendaciones sin relación con la brecha) documentados en la [sección 4 de la guía paso a paso](clase/guia_paso_a_paso_normatividad.md#4-errores-comunes-a-evitar).
+Antes de entregar, compare su checklist contra los errores más frecuentes (ítems "Cumple" sin evidencia, confundir "Parcial" con "Brecha", recomendaciones sin relación con la brecha) documentados en la [sección 4 de la guía paso a paso](clase/guia_paso_a_paso_normatividad.md#4-errores-comunes-a-evitar).
 
 ## 📤 Entregables
 

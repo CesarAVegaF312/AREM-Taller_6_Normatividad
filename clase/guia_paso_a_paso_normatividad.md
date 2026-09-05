@@ -19,8 +19,8 @@ Esta guía complementa el `README.md` del taller. Su objetivo es que, antes de e
 
 1. **Identificar datos y procesos sensibles** — liste qué información procesa el sistema y qué normativa le aplica a cada una.
 2. **Construir el checklist** — agrupe los requisitos a verificar por categoría (consentimiento, seguridad, protección de datos, prevención de fugas, retención), basándose en los marcos de la sección 1.
-3. **Evaluar el cumplimiento** — para cada ítem, marque **Cumple**, **Parcial**, **Brecha** o **No aplica**, siempre con evidencia o justificación concreta.
-4. **Documentar el riesgo de cada brecha** — explique qué pasa si esa brecha no se corrige (sanción, exposición de datos, pérdida de trazabilidad).
+3. **Evaluar el cumplimiento** — para cada ítem, marque **✅ Cumple** o **⚠️ Parcial** — la plantilla oficial solo tiene estos dos estados por ítem, siempre con evidencia o justificación concreta.
+4. **Documentar el riesgo de cada brecha** — "Brecha" no es un tercer estado del checklist: cada ítem marcado Parcial (o cualquier incumplimiento real detectado) se documenta como una fila aparte en la hoja **Brechas Identificadas**, explicando qué pasa si no se corrige (sanción, exposición de datos, pérdida de trazabilidad) y con qué nivel de riesgo.
 5. **Priorizar y recomendar** — ordene las brechas por riesgo y proponga una acción correctiva concreta para cada una.
 
 ---
@@ -39,53 +39,57 @@ Esta guía complementa el `README.md` del taller. Su objetivo es que, antes de e
 
 ### Paso 2 — Construir el checklist por categoría
 
-| Categoría | Ítem |
+| Categoría | Ítem (ejemplo) |
 |---|---|
-| Consentimiento | C1: Existe aviso de privacidad accesible antes de recolectar datos |
-| Consentimiento | C2: Se solicita consentimiento explícito para datos sensibles (ej. historial clínico) |
-| Seguridad (ISO 27001) | S1: Los datos sensibles están cifrados en tránsito y en reposo |
-| Seguridad (ISO 27001) | A1: El acceso a datos sensibles está limitado por rol (RBAC) |
-| Protección de Datos | A2: Existe registro de auditoría de quién accede a qué dato y cuándo |
-| Prevención de Fugas | S2: Existe un procedimiento documentado de respuesta a incidentes de fuga de datos |
-| Retención | R1: Existe una política de tiempo de retención y eliminación de datos |
-| Retención | R2: Los datos se eliminan o anonimizan al vencer su finalidad |
+| Consentimiento | Consentimiento informado al ciudadano y mecanismo para revocarlo |
+| Seguridad (ISO 27001) | Política formal de seguridad, cifrado en tránsito/reposo, plan de continuidad |
+| Protección de Datos | Oficial de Protección de Datos (DPO), logs de acceso a información personal |
+| Prevención de Fugas | Control de exportaciones manuales (DLP) |
+| Retención | Política de retención y anonimización de datos sensibles |
+| Roles y Responsabilidades | Roles y permisos documentados, formación del personal en protección de datos |
 
 ### Paso 3 — Evaluar el cumplimiento
 
-Cada ítem se marca con el nivel de cumplimiento oficial de la plantilla — no son solo dos estados (Cumple / Brecha): existe un tercer estado intermedio, **⚠️ Parcial**, para cuando un control está implementado de forma incompleta y no encaja bien en un Cumple/Brecha estricto (por ejemplo, un control aplicado solo a una parte del sistema):
+La plantilla oficial solo tiene **dos** estados posibles por ítem: **✅ Cumple** y **⚠️ Parcial** — no hay un tercer estado. Marque Parcial cuando un control está implementado de forma incompleta (por ejemplo, aplicado solo a una parte del sistema o solo por un canal manual), siempre con evidencia o justificación concreta. Esta es la evaluación completa de los 12 ítems de GobData, tal como quedó en la hoja **Checklist General**:
 
 | N° | Categoría | Criterio de Cumplimiento | Nivel de Cumplimiento | Evidencia / Justificación | Recomendación |
 |---|---|---|---|---|---|
-| 1 | Consentimiento | Existe aviso de privacidad accesible antes de recolectar datos | ✅ Cumple | El portal publica un aviso de privacidad visible antes del registro | Mantenerlo visible y revisarlo ante cambios normativos |
-| 2 | Consentimiento | Se solicita consentimiento explícito para datos sensibles (ej. historial clínico) | ⚠️ Brecha | El formulario de trámites de salud no pide consentimiento separado para el historial clínico | Agregar un consentimiento explícito y separado para historial clínico |
-| 3 | Seguridad (ISO 27001) | Los datos sensibles están cifrados en tránsito y en reposo | ⚠️ Parcial | El cifrado en reposo está implementado, pero los certificados digitales se transmiten sin verificar TLS en todos los subdominios | Forzar TLS en todos los subdominios y auditar certificados |
-| 4 | Seguridad (ISO 27001) | El acceso a datos sensibles está limitado por rol (RBAC) | ✅ Cumple | El sistema define roles (ciudadano, funcionario, administrador) | Revisar la asignación de roles periódicamente |
-| 5 | Protección de Datos | Existe registro de auditoría de quién accede a qué dato y cuándo | ⚠️ Brecha | No hay registro visible de auditoría de accesos a historiales clínicos | Implementar registro de auditoría (logs) de acceso a datos sensibles |
-| 6 | Prevención de Fugas | Existe un procedimiento documentado de respuesta a incidentes de fuga de datos | ⚠️ Brecha | No existe un procedimiento documentado de respuesta a incidentes | Documentar procedimiento de respuesta a incidentes de fuga de datos |
-| 7 | Retención | Existe una política de tiempo de retención y eliminación de datos | ⚠️ Brecha | No hay una política de retención publicada | Definir y publicar política de retención y eliminación |
-| 8 | Retención | Los datos se eliminan o anonimizan al vencer su finalidad | ⚠️ Brecha | Consecuencia directa del ítem 7: sin política, no hay eliminación programada | Automatizar la eliminación/anonimización una vez definida la política |
+| 1 | Consentimiento | Se solicita consentimiento informado al ciudadano antes del tratamiento de datos. | ✅ Cumple | Casilla de aceptación de términos en el registro de usuario. | Detallar fines específicos del tratamiento. |
+| 2 | Consentimiento | Mecanismo para revocar el consentimiento disponible. | ⚠️ Parcial | Solo mediante solicitud escrita. | Implementar botón o formulario en línea. |
+| 3 | Seguridad (ISO 27001) | Existe política formal de seguridad. | ✅ Cumple | Política de TI estatal basada en ISO/IEC 27001:2013. | Mantenerla actualizada conforme a versión 2022. |
+| 4 | Seguridad (ISO 27001) | Cifrado de datos en tránsito y reposo. | ✅ Cumple | HTTPS/TLS y cifrado de campos sensibles. | Revisar certificados y algoritmos anualmente. |
+| 5 | Seguridad (ISO 27001) | Plan de continuidad y recuperación. | ⚠️ Parcial | Respaldos diarios sin plan BCP/DRP formal. | Diseñar e implementar plan de continuidad documentado. |
+| 6 | Protección de Datos | Se cuenta con un Oficial de Protección de Datos (DPO). | ✅ Cumple | Funcionario asignado conforme a Ley 1581. | Reforzar su rol en auditorías y reportes. |
+| 7 | Protección de Datos | Logs de acceso a información personal. | ✅ Cumple | Sistema registra y audita consultas. | Revisar integridad y retención de logs. |
+| 8 | Prevención de Fugas | Se controlan exportaciones manuales. | ⚠️ Parcial | No hay controles DLP. | Implementar políticas y herramientas DLP. |
+| 9 | Retención | Política formal de retención de datos. | ✅ Cumple | Cumple con Ley General de Archivos. | Automatizar procesos de eliminación. |
+| 10 | Retención | Datos sensibles se anonimizarán cuando dejen de ser necesarios. | ⚠️ Parcial | No hay proceso implementado. | Desarrollar política de anonimización. |
+| 11 | Roles y Responsabilidades | Roles y permisos documentados. | ✅ Cumple | Manual de seguridad define roles (dueño, custodio, usuario). | Actualizar trimestralmente. |
+| 12 | Roles y Responsabilidades | Formación del personal en protección de datos. | ⚠️ Parcial | Capacitación anual sin evaluación. | Medir efectividad y reforzar entrenamiento. |
 
 ### Paso 4 — Documentar el riesgo de cada brecha
 
-| N° | Categoría | Riesgo si no se corrige |
+Cada uno de los 5 ítems marcados ⚠️ Parcial (#2, #5, #8, #10, #12) se convierte en una fila aparte de la hoja **Brechas Identificadas**, con su propia columna de Riesgo:
+
+| Categoría | Brecha | Riesgo |
 |---|---|---|
-| 2 | Consentimiento | Sanción de la SIC por tratamiento de datos sensibles sin consentimiento explícito (Ley 1581) |
-| 3 | Seguridad (ISO 27001) | Exposición de certificados digitales y posible suplantación de identidad ciudadana mientras el cifrado en tránsito no cubra todos los subdominios |
-| 5 | Protección de Datos | Imposibilidad de demostrar cumplimiento ante una auditoría o investigación de la SIC |
-| 6 | Prevención de Fugas | Respuesta lenta y desordenada ante una fuga real, agravando el impacto |
-| 7 / 8 | Retención | Acumulación indefinida de datos sensibles, incumpliendo el principio de finalidad de la Ley 1581 |
+| Consentimiento | No existe mecanismo automático de revocatoria. | Medio |
+| Seguridad | No hay plan formal de continuidad (BCP/DRP). | Alto |
+| Prevención de Fugas | Exportación manual no controlada. | Alto |
+| Retención | No existe eliminación automatizada. | Medio |
+| Formación | Sin evaluación de efectividad. | Bajo |
 
 ### Paso 5 — Priorizar y recomendar
 
-Esta es la tabla final que se entrega como `checklist-cliente.xlsx`, con la misma estructura de la hoja **Brechas Identificadas** de la plantilla oficial, ordenada de mayor a menor prioridad:
+Esta es la tabla final que se entrega como `checklist-cliente.xlsx`, con la misma estructura de la hoja **Brechas Identificadas** de la plantilla oficial:
 
 | Categoría | Brecha | Riesgo | Recomendación Prioritaria | Nivel de Prioridad |
 |---|---|---|---|---|
-| Consentimiento | No se solicita consentimiento explícito y separado para datos sensibles (historial clínico) | Sanción legal por tratamiento de dato sensible sin consentimiento (Ley 1581) | Agregar un consentimiento explícito y separado para historial clínico | Alta |
-| Seguridad (ISO 27001) | El cifrado en tránsito no se verifica ni se fuerza en todos los subdominios (TLS parcial) | Exposición de certificados digitales y posible suplantación de identidad ciudadana | Forzar TLS en todos los subdominios y auditar certificados | Alta |
-| Protección de Datos | No hay registro visible de auditoría de accesos a historiales clínicos | Sin trazabilidad ante auditoría | Implementar registro de auditoría (logs) de acceso a datos sensibles | Alta |
-| Retención | No existe política de retención ni eliminación/anonimización programada de datos | Retención indefinida de datos, incumpliendo el principio de finalidad de la Ley 1581 | Definir y publicar política de retención y eliminación | Media |
-| Prevención de Fugas | No existe un procedimiento documentado de respuesta a incidentes de fuga de datos | Respuesta desordenada ante incidentes | Documentar procedimiento de respuesta a incidentes de fuga de datos | Media |
+| Consentimiento | No existe mecanismo automático de revocatoria. | Medio | Crear funcionalidad de eliminación y revocatoria digital. | Alta |
+| Seguridad | No hay plan formal de continuidad (BCP/DRP). | Alto | Diseñar, probar e implementar plan de continuidad. | Alta |
+| Prevención de Fugas | Exportación manual no controlada. | Alto | Implementar DLP para controlar descargas y exportaciones. | Alta |
+| Retención | No existe eliminación automatizada. | Medio | Configurar reglas de caducidad en base de datos. | Media |
+| Formación | Sin evaluación de efectividad. | Bajo | Aplicar pruebas posteriores a capacitación. | Media |
 
 Vea esta misma tabla en su [versión visual e interactiva](visualizacion-normatividad.html), con la evidencia y el riesgo de cada ítem del checklist un clic más cerca.
 
@@ -96,15 +100,15 @@ Vea esta misma tabla en su [versión visual e interactiva](visualizacion-normati
 | Error frecuente | Por qué es un problema | Cómo corregirlo |
 |---|---|---|
 | Marcar "Cumple" sin evidencia concreta | El checklist se vuelve una opinión, no una auditoría verificable | Cite dónde se observa el cumplimiento (documento, pantalla, configuración) |
-| Usar "No aplica" para evitar analizar un ítem incómodo | Oculta brechas reales en vez de documentarlas | Solo use "No aplica" cuando el sistema genuinamente no procesa ese tipo de dato/proceso |
+| Confundir "Parcial" con "Brecha" | "Brecha" no es un estado que se marca en el checklist: es la tabla derivada (Brechas Identificadas) que documenta el riesgo de cada incumplimiento real | Marque el ítem como Parcial en el Checklist General y registre la brecha correspondiente, con su riesgo, en la hoja Brechas Identificadas |
 | Copiar el checklist genérico sin adaptarlo al sector del cliente | Ignora normativas sectoriales específicas (salud, educación, finanzas) | Investigue y agregue normativas propias del sector del cliente (MinSalud, MinTIC, SuperSalud, SFC, etc.) |
-| Recomendaciones sin relación con la brecha encontrada | El informe pierde utilidad práctica para el cliente | Cada recomendación debe corregir directamente el ítem marcado como brecha |
+| Recomendaciones sin relación con la brecha encontrada | El informe pierde utilidad práctica para el cliente | Cada recomendación debe corregir directamente el ítem registrado en la hoja de Brechas Identificadas |
 
 ---
 
 ## 5. Checklist de autoevaluación antes de entregar
 
-- [ ] Cada ítem está evaluado como Cumple, Parcial, Brecha o No aplica, con evidencia o justificación.
+- [ ] Cada ítem está evaluado como Cumple o Parcial, con evidencia o justificación; cada Parcial (o incumplimiento real) queda registrado en la tabla de Brechas Identificadas.
 - [ ] Los ítems están organizados por categoría (consentimiento, seguridad, protección de datos, prevención de fugas, retención, etc.).
 - [ ] Cada brecha tiene un riesgo legal/operativo explicado, no solo "no cumple".
 - [ ] Se investigaron normativas sectoriales adicionales aplicables al cliente.
@@ -120,10 +124,10 @@ Igual que en el Taller 5, cada brecha del checklist se modela como un elemento d
 ```mermaid
 flowchart TD
     subgraph motivacion["Motivación"]
-        constraint(["🚫 Consentimiento explícito para datos sensibles (Ley 1581)"])
+        constraint(["🚫 Mecanismo de revocatoria del consentimiento (Ley 1581)"])
     end
     subgraph negocio["Negocio"]
-        tramite["Trámite de Historial Clínico"]
+        tramite["Registro de Usuario Ciudadano"]
     end
 
     constraint -.->|"restringe"| tramite
@@ -134,7 +138,7 @@ flowchart TD
     class tramite negocio
 ```
 
-La tabla de priorización (Paso 5) es, otra vez, el insumo directo: cada ítem marcado como "Brecha" se convierte en una `Constraint` que restringe al proceso de negocio o al componente de aplicación donde ocurre — y que después, en el Taller 7, origina un `Gap` a cerrar en el TO-BE.
+La tabla de priorización (Paso 5) es, otra vez, el insumo directo: cada fila de la hoja Brechas Identificadas se convierte en una `Constraint` que restringe al proceso de negocio o al componente de aplicación donde ocurre — y que después, en el Taller 7, origina un `Gap` a cerrar en el TO-BE.
 
 ---
 
