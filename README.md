@@ -10,6 +10,12 @@ Verificar los aspectos legales, normativos y de cumplimiento que aplican al sist
 
 Antes de diligenciar el checklist, revise la [**Guía Paso a Paso: Checklist de Cumplimiento Normativo**](clase/guia_paso_a_paso_normatividad.md). Incluye un resumen de qué exige cada marco normativo, la metodología de 5 pasos (de identificar datos sensibles a recomendaciones priorizadas), un ejemplo completo construido paso a paso sobre el caso de GobData, y una tabla de errores comunes.
 
+### 🖼️ Versión visual: Checklist de Cumplimiento Normativo
+
+[`clase/visualizacion-normatividad.html`](clase/visualizacion-normatividad.html) es una página interactiva autocontenida: la matriz de los 8 ítems del checklist de GobData con su nivel de cumplimiento (Cumple / Parcial / Brecha / No aplica), un panel clickeable por ítem que muestra la evidencia real encontrada, el riesgo legal si es una brecha y la recomendación, la tabla de riesgo por brecha, la tabla final priorizada que se entrega como `checklist-cliente.xlsx`, la metodología de 5 pasos y los errores comunes a evitar. GitHub no la renderiza interactiva desde la vista de archivo; para verla:
+- Descargue el archivo y ábralo con doble clic (funciona sin conexión, es HTML plano), o
+- Pegue esta URL en [htmlpreview.github.io](https://htmlpreview.github.io/): `https://raw.githubusercontent.com/CesarAVegaF312/AREM-Taller_6_Normatividad/main/clase/visualizacion-normatividad.html`
+
 ## 🏛️ Caso base de referencia: GobData (Portal de Trámites Ciudadanos)
 
 GobData es un portal estatal donde los ciudadanos realizan trámites en línea relacionados con identidad, salud, impuestos, y derechos civiles. El sistema procesa grandes volúmenes de datos sensibles como números de identificación, historial clínico, direcciones y certificados digitales. Está sujeto a múltiples normativas nacionales como la Ley 1581 de Protección de Datos Personales, así como a estándares internacionales como ISO/IEC 27001. Evaluar el cumplimiento normativo permite garantizar la confianza del ciudadano y la integridad de los procesos públicos.

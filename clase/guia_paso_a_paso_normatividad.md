@@ -87,6 +87,8 @@ Esta es la tabla final que se entrega como `checklist-cliente.xlsx`, con la mism
 | Retención | No existe política de retención ni eliminación/anonimización programada de datos | Retención indefinida de datos, incumpliendo el principio de finalidad de la Ley 1581 | Definir y publicar política de retención y eliminación | Media |
 | Prevención de Fugas | No existe un procedimiento documentado de respuesta a incidentes de fuga de datos | Respuesta desordenada ante incidentes | Documentar procedimiento de respuesta a incidentes de fuga de datos | Media |
 
+Vea esta misma tabla en su [versión visual e interactiva](visualizacion-normatividad.html), con la evidencia y el riesgo de cada ítem del checklist un clic más cerca.
+
 ---
 
 ## 4. Errores comunes a evitar
