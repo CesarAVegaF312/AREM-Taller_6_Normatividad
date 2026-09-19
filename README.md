@@ -1,22 +1,22 @@
-# 🛠️ Taller 6: Checklist de Cumplimiento Normativo
+# Taller 6: Checklist de Cumplimiento Normativo
 
-## 🎯 Objetivo
+## Objetivo
 
 Verificar los aspectos legales, normativos y de cumplimiento que aplican al sistema del cliente, utilizando listas de control basadas en marcos como ISO 27001, GDPR, Habeas Data y la Ley 1581 de Protección de Datos en Colombia.
 
 ---
 
-## 📘 Guía paso a paso
+## Guía paso a paso
 
 Antes de diligenciar el checklist, revise la [**Guía Paso a Paso: Checklist de Cumplimiento Normativo**](clase/guia_paso_a_paso_normatividad.md). Incluye un resumen de qué exige cada marco normativo, la metodología de 5 pasos (de identificar datos sensibles a recomendaciones priorizadas), un ejemplo completo construido paso a paso sobre el caso de GobData, y una tabla de errores comunes.
 
-### 🖼️ Versión visual: Checklist de Cumplimiento Normativo
+### Versión visual: Checklist de Cumplimiento Normativo
 
 [`clase/visualizacion-normatividad.html`](clase/visualizacion-normatividad.html) es una página interactiva autocontenida: la matriz de los 12 ítems del checklist de GobData con su nivel de cumplimiento (Cumple / Parcial), un panel clickeable por ítem que muestra la evidencia real encontrada y la recomendación (y, si es un ítem Parcial, el riesgo y la recomendación prioritaria de la brecha derivada), la tabla derivada de Brechas Identificadas con su riesgo y prioridad, la metodología de 5 pasos y los errores comunes a evitar. GitHub no la renderiza interactiva desde la vista de archivo; para verla:
 - Descargue el archivo y ábralo con doble clic (funciona sin conexión, es HTML plano), o
 - Pegue esta URL en [htmlpreview.github.io](https://htmlpreview.github.io/): `https://raw.githubusercontent.com/CesarAVegaF312/AREM-Taller_6_Normatividad/main/clase/visualizacion-normatividad.html`
 
-## 🏛️ Caso base de referencia: GobData (Portal de Trámites Ciudadanos)
+## Caso base de referencia: GobData (Portal de Trámites Ciudadanos)
 
 GobData es un portal estatal donde los ciudadanos realizan trámites en línea relacionados con identidad, salud, impuestos, y derechos civiles. El sistema procesa grandes volúmenes de datos sensibles como números de identificación, historial clínico, direcciones y certificados digitales. Está sujeto a múltiples normativas nacionales como la Ley 1581 de Protección de Datos Personales, así como a estándares internacionales como ISO/IEC 27001. Evaluar el cumplimiento normativo permite garantizar la confianza del ciudadano y la integridad de los procesos públicos.
 
@@ -33,7 +33,7 @@ GobData es un portal estatal donde los ciudadanos realizan trámites en línea r
 
 ---
 
-## 🧪 Parte 1: Trabajo en Clase
+## Parte 1: Trabajo en Clase
 
 Durante la clase se espera que el equipo:
 
@@ -49,7 +49,7 @@ Siga la metodología de 5 pasos de la [guía paso a paso](clase/guia_paso_a_paso
 
 ---
 
-## 🧠 Parte 2: Aplicación al Cliente Real
+## Parte 2: Aplicación al Cliente Real
 
 Después de la clase, el equipo debe:
 
@@ -60,7 +60,7 @@ Después de la clase, el equipo debe:
 
 ---
 
-## 📁 Estructura esperada del repositorio
+## Estructura esperada del repositorio
 
 ```text
 taller-06-normatividad/
@@ -82,11 +82,11 @@ taller-06-normatividad/
 
 ---
 
-## ⚠️ Errores comunes
+## Errores comunes
 
 Antes de entregar, compare su checklist contra los errores más frecuentes (ítems "Cumple" sin evidencia, confundir "Parcial" con "Brecha", recomendaciones sin relación con la brecha) documentados en la [sección 4 de la guía paso a paso](clase/guia_paso_a_paso_normatividad.md#4-errores-comunes-a-evitar).
 
-## 📤 Entregables
+## Entregables
 
 - Checklist diligenciado para el cliente
 - Informe técnico con hallazgos y recomendaciones
@@ -94,7 +94,7 @@ Antes de entregar, compare su checklist contra los errores más frecuentes (íte
 
 ---
 
-## 📊 Rúbrica de Evaluación
+## Rúbrica de Evaluación
 
 | Criterio                            | Excelente (5)                                                            | Aceptable (3) / Insuficiente (1–2)                     |
 |-------------------------------------|---------------------------------------------------------------------------|----------------------------------------------------------|
@@ -105,6 +105,6 @@ Antes de entregar, compare su checklist contra los errores más frecuentes (íte
 
 ---
 
-## ✅ Licencia
+## Licencia
 
 Este taller hace parte del curso de Arquitectura Empresarial - Universidad de La Sabana. Uso académico bajo licencia MIT.
