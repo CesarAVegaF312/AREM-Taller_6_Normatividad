@@ -10,6 +10,8 @@ Verificar los aspectos legales, normativos y de cumplimiento que aplican al sist
 
 Antes de diligenciar el checklist, revise la [**Guía Paso a Paso: Checklist de Cumplimiento Normativo**](clase/guia_paso_a_paso_normatividad.md). Incluye un resumen de qué exige cada marco normativo, la metodología de 5 pasos (de identificar datos sensibles a recomendaciones priorizadas), un ejemplo completo construido paso a paso sobre el caso de GobData, y una tabla de errores comunes.
 
+La presentación de la clase está en [`7. Normatividad_Cumplimiento.pptx`](7.%20Normatividad_Cumplimiento.pptx) (versión para estudiantes, sin notas del orador).
+
 ### Versión visual: Checklist de Cumplimiento Normativo
 
 [`clase/visualizacion-normatividad.html`](clase/visualizacion-normatividad.html) es una página interactiva autocontenida: la matriz de los 12 ítems del checklist de GobData con su nivel de cumplimiento (Cumple / Parcial), un panel clickeable por ítem que muestra la evidencia real encontrada y la recomendación (y, si es un ítem Parcial, el riesgo y la recomendación prioritaria de la brecha derivada), la tabla derivada de Brechas Identificadas con su riesgo y prioridad, la metodología de 5 pasos y los errores comunes a evitar. GitHub no la renderiza interactiva desde la vista de archivo; para verla:
