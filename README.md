@@ -14,9 +14,7 @@ La presentación de la clase está en [`7. Normatividad_Cumplimiento.pptx`](7.%2
 
 ### Versión visual: Checklist de Cumplimiento Normativo
 
-[`clase/visualizacion-normatividad.html`](clase/visualizacion-normatividad.html) es una página interactiva autocontenida: la matriz de los 12 ítems del checklist de GobData con su nivel de cumplimiento (Cumple / Parcial), un panel clickeable por ítem que muestra la evidencia real encontrada y la recomendación (y, si es un ítem Parcial, el riesgo y la recomendación prioritaria de la brecha derivada), la tabla derivada de Brechas Identificadas con su riesgo y prioridad, la metodología de 5 pasos y los errores comunes a evitar. GitHub no la renderiza interactiva desde la vista de archivo; para verla:
-- Descargue el archivo y ábralo con doble clic (funciona sin conexión, es HTML plano), o
-- Pegue esta URL en [htmlpreview.github.io](https://htmlpreview.github.io/): `https://raw.githubusercontent.com/CesarAVegaF312/AREM-Taller_6_Normatividad/main/clase/visualizacion-normatividad.html`
+[`clase/visualizacion-normatividad.html`](clase/visualizacion-normatividad.html) es una página interactiva autocontenida: la matriz de los 12 ítems del checklist de GobData con su nivel de cumplimiento (Cumple / Parcial), un panel clickeable por ítem que muestra la evidencia real encontrada y la recomendación (y, si es un ítem Parcial, el riesgo y la recomendación prioritaria de la brecha derivada), la tabla derivada de Brechas Identificadas con su riesgo y prioridad, la metodología de 5 pasos y los errores comunes a evitar. Ábrala directamente en el navegador: **[ver la página interactiva](https://cesaravegaf312.github.io/AREM-Taller_6_Normatividad/clase/visualizacion-normatividad.html)**. También puede descargar el archivo y abrirlo con doble clic; funciona sin conexión.
 
 ## Caso base de referencia: GobData (Portal de Trámites Ciudadanos)
 
