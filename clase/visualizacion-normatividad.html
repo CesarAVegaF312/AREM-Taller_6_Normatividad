@@ -169,7 +169,7 @@
             <tr><th style="width:24%">Marco / Norma</th><th style="width:38%">Qué exige (resumen)</th><th>Aplica cuando…</th></tr>
           </thead>
           <tbody>
-            <tr><td><strong>Habeas Data</strong> · Ley 1581 de 2012 (Colombia)</td><td>Consentimiento informado, finalidad del tratamiento, derechos ARCO (Acceso, Rectificación, Cancelación, Oposición)</td><td>El sistema recolecta datos personales de ciudadanos o usuarios colombianos</td></tr>
+            <tr><td><strong>Habeas Data</strong> · Ley 1581 de 2012 (Colombia)</td><td>Consentimiento informado, finalidad del tratamiento, derechos del titular según la Ley 1581 (conocer, actualizar, rectificar, suprimir y revocar la autorización)</td><td>El sistema recolecta datos personales de ciudadanos o usuarios colombianos</td></tr>
             <tr><td><strong>ISO/IEC 27001</strong></td><td>Gestión sistemática de la seguridad de la información: control de accesos, gestión de incidentes, continuidad</td><td>El sistema maneja información que debe protegerse de forma sistemática</td></tr>
             <tr><td>Protección contra fugas de datos</td><td>Cifrado, monitoreo y respuesta ante incidentes de exposición de datos</td><td>El sistema almacena o transmite datos sensibles</td></tr>
             <tr><td>Consentimiento, auditoría y roles de acceso</td><td>Registro de quién accede a qué dato, bajo qué autorización</td><td>El sistema tiene múltiples roles con distinto nivel de acceso a datos sensibles</td></tr>
@@ -288,7 +288,7 @@
       <h2>Fuentes</h2>
       <ul class="srcs">
         <li>Ley 1581 de 2012 — Régimen general de protección de datos personales en Colombia (Habeas Data).</li>
-        <li>Decreto 1377 de 2013 — Reglamentario de la Ley 1581, define el procedimiento para el ejercicio de los derechos ARCO.</li>
+        <li>Decreto 1377 de 2013 — Reglamentario de la Ley 1581, define el procedimiento para el ejercicio de los derechos de los titulares (conocer, actualizar, rectificar, suprimir y revocar la autorización).</li>
         <li>Superintendencia de Industria y Comercio (SIC) — autoridad de protección de datos en Colombia; investiga y sanciona incumplimientos de la Ley 1581.</li>
         <li>ISO/IEC 27001 — norma internacional de gestión de la seguridad de la información.</li>
         <li>Guía de la Guía Paso a Paso del taller — marcos, metodología de 5 pasos y ejemplo guiado completo sobre GobData.</li>
@@ -342,8 +342,8 @@ const ITEMS = [
    ev:"Respaldos diarios sin plan BCP/DRP formal.",
    rec:"Diseñar e implementar plan de continuidad documentado.",
    gap:{riesgo:"Alto", brecha:"No hay plan formal de continuidad (BCP/DRP).", recPrioritaria:"Diseñar, probar e implementar plan de continuidad.", prioridad:"Alta"}},
-  {n:6, cat:"Protección de Datos", crit:"Se cuenta con un Oficial de Protección de Datos (DPO).",
-   short:"Oficial de Protección de Datos", level:"cumple",
+  {n:6, cat:"Protección de Datos", crit:"Se designó una persona o área responsable de atender consultas y reclamos de los titulares (Ley 1581).",
+   short:"Responsable de consultas y reclamos", level:"cumple",
    ev:"Funcionario asignado conforme a Ley 1581.",
    rec:"Reforzar su rol en auditorías y reportes."},
   {n:7, cat:"Protección de Datos", crit:"Logs de acceso a información personal.",

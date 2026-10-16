@@ -44,7 +44,7 @@ Esta guía complementa el `README.md` del taller. Su objetivo es que, antes de e
 |---|---|
 | Consentimiento | Consentimiento informado al ciudadano y mecanismo para revocarlo |
 | Seguridad (ISO 27001) | Política formal de seguridad, cifrado en tránsito/reposo, plan de continuidad |
-| Protección de Datos | Oficial de Protección de Datos (DPO), logs de acceso a información personal |
+| Protección de Datos | Persona o área responsable de atender consultas y reclamos de los titulares (Ley 1581), logs de acceso a información personal |
 | Prevención de Fugas | Control de exportaciones manuales (DLP) |
 | Retención | Política de retención y anonimización de datos sensibles |
 | Roles y Responsabilidades | Roles y permisos documentados, formación del personal en protección de datos |
@@ -60,7 +60,7 @@ La plantilla oficial solo tiene **dos** estados posibles por ítem: **Cumple** y
 | 3 | Seguridad (ISO 27001) | Existe política formal de seguridad. | Cumple | Política de TI estatal basada en ISO/IEC 27001:2022. | Revisarla en cada nueva edición de la norma; la de 2013 dejó de ser válida para certificación en octubre de 2025. |
 | 4 | Seguridad (ISO 27001) | Cifrado de datos en tránsito y reposo. | Cumple | HTTPS/TLS y cifrado de campos sensibles. | Revisar certificados y algoritmos anualmente. |
 | 5 | Seguridad (ISO 27001) | Plan de continuidad y recuperación. | Parcial | Respaldos diarios sin plan BCP/DRP formal. | Diseñar e implementar plan de continuidad documentado. |
-| 6 | Protección de Datos | Se cuenta con un Oficial de Protección de Datos (DPO). | Cumple | Funcionario asignado conforme a Ley 1581. | Reforzar su rol en auditorías y reportes. |
+| 6 | Protección de Datos | Se designó una persona o área responsable de atender consultas y reclamos de los titulares (Ley 1581). | Cumple | Funcionario asignado conforme a Ley 1581. | Reforzar su rol en auditorías y reportes. |
 | 7 | Protección de Datos | Logs de acceso a información personal. | Cumple | Sistema registra y audita consultas. | Revisar integridad y retención de logs. |
 | 8 | Prevención de Fugas | Se controlan exportaciones manuales. | Parcial | No hay controles DLP. | Implementar políticas y herramientas DLP. |
 | 9 | Retención | Política formal de retención de datos. | Cumple | Cumple con Ley General de Archivos. | Automatizar procesos de eliminación. |
