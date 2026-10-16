@@ -8,8 +8,9 @@ Esta guía complementa el `README.md` del taller. Su objetivo es que, antes de e
 
 | Marco / Norma | Qué exige (resumen) | Aplica cuando... |
 |---|---|---|
-| Habeas Data (Ley 1581 de 2012 - Colombia) | Consentimiento informado, finalidad del tratamiento, derechos ARCO (Acceso, Rectificación, Cancelación, Oposición) | El sistema recolecta datos personales de ciudadanos o usuarios colombianos |
+| Habeas Data (Ley 1581 de 2012 - Colombia) | Autorización previa, expresa e informada; finalidad del tratamiento; derechos del titular según el artículo 8: conocer, actualizar y rectificar sus datos, solicitar prueba de la autorización, ser informado del uso dado a sus datos, presentar quejas ante la SIC, revocar la autorización o solicitar la supresión del dato, y acceder gratuitamente a sus datos (verificado en la fuente primaria, Función Pública, octubre de 2026; la sigla ARCO es de España y México, no de la ley colombiana) | El sistema recolecta datos personales de ciudadanos o usuarios colombianos |
 | ISO/IEC 27001 | Gestión sistemática de la seguridad de la información: control de accesos, gestión de incidentes, continuidad | El sistema maneja información que debe protegerse de forma sistemática |
+| GDPR (Reglamento (UE) 2016/679) | Base legal del tratamiento, minimización, derechos del interesado (acceso, rectificación, supresión, portabilidad), notificación de brechas en 72 horas | El sistema trata datos de residentes de la Unión Europea, aunque la organización esté en Colombia |
 | Protección contra fugas de datos | Cifrado, monitoreo y respuesta ante incidentes de exposición de datos | El sistema almacena o transmite datos sensibles |
 | Consentimiento, auditoría y roles de acceso | Registro de quién accede a qué dato, bajo qué autorización | El sistema tiene múltiples roles con distinto nivel de acceso a datos sensibles |
 
@@ -56,7 +57,7 @@ La plantilla oficial solo tiene **dos** estados posibles por ítem: **Cumple** y
 |---|---|---|---|---|---|
 | 1 | Consentimiento | Se solicita consentimiento informado al ciudadano antes del tratamiento de datos. | Cumple | Casilla de aceptación de términos en el registro de usuario. | Detallar fines específicos del tratamiento. |
 | 2 | Consentimiento | Mecanismo para revocar el consentimiento disponible. | Parcial | Solo mediante solicitud escrita. | Implementar botón o formulario en línea. |
-| 3 | Seguridad (ISO 27001) | Existe política formal de seguridad. | Cumple | Política de TI estatal basada en ISO/IEC 27001:2013. | Mantenerla actualizada conforme a versión 2022. |
+| 3 | Seguridad (ISO 27001) | Existe política formal de seguridad. | Cumple | Política de TI estatal basada en ISO/IEC 27001:2022. | Revisarla en cada nueva edición de la norma; la de 2013 dejó de ser válida para certificación en octubre de 2025. |
 | 4 | Seguridad (ISO 27001) | Cifrado de datos en tránsito y reposo. | Cumple | HTTPS/TLS y cifrado de campos sensibles. | Revisar certificados y algoritmos anualmente. |
 | 5 | Seguridad (ISO 27001) | Plan de continuidad y recuperación. | Parcial | Respaldos diarios sin plan BCP/DRP formal. | Diseñar e implementar plan de continuidad documentado. |
 | 6 | Protección de Datos | Se cuenta con un Oficial de Protección de Datos (DPO). | Cumple | Funcionario asignado conforme a Ley 1581. | Reforzar su rol en auditorías y reportes. |
