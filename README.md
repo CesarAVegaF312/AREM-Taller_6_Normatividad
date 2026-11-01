@@ -60,6 +60,14 @@ Después de la clase, el equipo debe:
 
 ---
 
+## Validación técnica, análisis de casos y tecnología (opcional)
+
+Para comprobar que los controles del checklist funcionan, y no solo que están escritos, el equipo puede ejecutar una maqueta de la base de datos de GobData en Docker con los controles ya implementados (cifrado del historial clínico, roles con permisos distintos, registro de auditoría) y ver qué pasa cuando un rol sin autorización intenta leer datos sensibles. La misma maqueta confirma con evidencia una de las brechas del caso base (anonimización). No es un ejercicio de programación: los scripts ya están listos en [`clase/validacion-tecnica/`](clase/validacion-tecnica/) y solo se ejecutan. El procedimiento está en la [sección 7 de la guía paso a paso](clase/guia_paso_a_paso_normatividad.md#7-validación-técnica-de-los-controles-opcional). Siempre con datos inventados, nunca con datos reales del cliente.
+
+**Análisis de caso real y tecnología.** La [sección 8 de la guía](clase/guia_paso_a_paso_normatividad.md#8-análisis-de-caso-real-y-panorama-tecnológico-opcional) analiza la sanción de la Superintendencia de Industria y Comercio a SOS EPS (2025) por divulgar la historia clínica de un paciente, y presenta el panorama de tecnologías de cumplimiento (clasificación de datos, consentimiento, cifrado y llaves, anonimización, DLP, auditoría y GRC). El equipo analiza un caso del sector de su cliente con la [plantilla de análisis de caso](plantillas/plantilla_analisis_caso.md) en `entrega/analisis-caso.md`.
+
+---
+
 ## Estructura esperada del repositorio
 
 ```text

@@ -1,0 +1,17 @@
+# Base de datos de validación de controles normativos (Taller 6).
+# Al iniciar por primera vez, PostgreSQL ejecuta en orden los scripts 01 y 02.
+#
+#   docker compose up -d
+#   docker compose exec db psql -U gobdata -d gobdata -f /validacion/03_validacion.sql
+#   docker compose down -v
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: gobdata
+      POSTGRES_PASSWORD: gobdata
+      POSTGRES_DB: gobdata
+    volumes:
+      - ./01_controles.sql:/docker-entrypoint-initdb.d/01_controles.sql:ro
+      - ./02_datos.sql:/docker-entrypoint-initdb.d/02_datos.sql:ro
+      - ./03_validacion.sql:/validacion/03_validacion.sql:ro

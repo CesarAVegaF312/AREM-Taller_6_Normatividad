@@ -143,4 +143,100 @@ La tabla de priorización (Paso 5) es, otra vez, el insumo directo: cada fila de
 
 ---
 
+## 7. Validación técnica de los controles (opcional)
+
+El primer error común de la sección 4 es marcar "Cumple" sin evidencia concreta. Esta sección propone llevar la evidencia un paso más allá: **comprobar que el control funciona**, no solo que está escrito en un manual. Se usa una maqueta de la base de datos de GobData en Docker que ya trae implementados los controles técnicos del checklist. No es un ejercicio de programación: los scripts ya están listos en [`validacion-tecnica/`](validacion-tecnica/) y solo se ejecutan y se leen.
+
+### 7.1 Qué se necesita
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (o Docker Engine en Linux).
+
+### 7.2 Correr la validación del caso base
+
+Desde la carpeta `clase/validacion-tecnica/`:
+
+```bash
+docker compose up -d
+docker compose exec db psql -U gobdata -d gobdata -f /validacion/03_validacion.sql
+docker compose down -v   # al terminar: apaga y borra la base
+```
+
+| Archivo | Qué contiene |
+|---|---|
+| [`01_controles.sql`](validacion-tecnica/01_controles.sql) | La base de GobData con sus controles: dos roles de negocio con permisos distintos, el diagnóstico clínico cifrado, una tabla de auditoría y una única puerta de entrada al historial que deja registro de cada consulta. |
+| [`02_datos.sql`](validacion-tecnica/02_datos.sql) | Tres ciudadanos, sus trámites y su historial clínico. Todos los datos son inventados. |
+| [`03_validacion.sql`](validacion-tecnica/03_validacion.sql) | Una prueba por ítem del checklist, ejecutada con el usuario de cada rol. |
+
+### 7.3 Qué comprueba cada prueba
+
+| Ítem del checklist | Prueba | Resultado esperado |
+|---|---|---|
+| 4. Cifrado de datos en reposo (Cumple) | Leer la tabla del historial clínico directamente | El diagnóstico aparece como bytes ilegibles, no como texto |
+| 11. Roles y permisos (Cumple) | Con el usuario del funcionario de trámites, intentar leer el historial, usar la función de consulta y leer la llave de cifrado | Las tres operaciones terminan en `ERROR: permission denied` |
+| 7. Logs de acceso a información personal (Cumple) | Con el usuario del profesional de salud, consultar un historial y luego intentar borrar la auditoría | La consulta funciona, el borrado falla y la tabla de auditoría muestra quién consultó a quién y cuándo |
+| 10. Anonimización de datos que ya no son necesarios (Parcial) | Buscar ciudadanos con trámites cerrados hace más de 5 años que conservan todos sus datos | La consulta devuelve filas: la brecha queda confirmada con evidencia, no solo con una afirmación |
+
+La validación también enseña sus propios límites. La maqueta guarda la llave de cifrado dentro de la misma base de datos, en una tabla protegida. Eso basta para la demostración, pero en un sistema real sería una brecha: quien robe una copia completa de la base se lleva también la llave. La llave debe vivir en un gestor de llaves (ver la sección 8.3).
+
+### 7.4 Aplicarlo al cliente real
+
+1. Escoja dos ítems técnicos del checklist del cliente que haya marcado "Cumple" (cifrado, control de acceso, registro de auditoría, retención).
+2. Por cada uno, describa en `entrega/informe.md` qué prueba demostraría que el control funciona, tomando como modelo la tabla de la sección 7.3, y quién en la organización del cliente podría ejecutarla.
+3. Si el cliente le muestra la prueba (una captura del acceso denegado, un extracto del registro de auditoría sin datos personales), cítela como evidencia en el checklist.
+
+> La validación se hace sobre la maqueta, con datos inventados. Nunca pida ni copie datos personales reales del cliente para probar un control: eso sería, en sí mismo, un tratamiento de datos sin autorización.
+
+---
+
+## 8. Análisis de caso real y panorama tecnológico (opcional)
+
+### 8.1 Caso: la SIC sanciona a SOS EPS por divulgar una historia clínica (Colombia, 2025)
+
+**Qué pasó.** En agosto de 2025, la Delegatura para la Protección de Datos Personales de la Superintendencia de Industria y Comercio (SIC) confirmó una sanción contra Servicio Occidental de Salud S.A. (SOS EPS). Según la SIC, la EPS divulgó sin autorización ni justificación legal la historia clínica completa de un afiliado, incluido su diagnóstico de VIH. De acuerdo con la prensa, la información se envió a directivos del empleador del paciente durante un trámite de calificación de una patología, y los hechos ocurrieron en 2022. La SIC recordó que la historia clínica es un conjunto de datos personales sensibles con circulación restringida, y rechazó el argumento de que no se había probado un perjuicio: la protección aplica también frente al riesgo de afectación.
+
+**Qué falló, en el lenguaje de este taller.**
+
+| Ítem del checklist | Qué falló | Normativa |
+|---|---|---|
+| Consentimiento | Se compartieron datos de salud con terceros sin autorización previa, expresa e informada del titular | Ley 1581 de 2012 (datos sensibles) |
+| Roles y permisos | Quien envió la información pudo extraer la historia clínica completa y remitirla fuera de la entidad | Ley 1581, deber de seguridad; ISO/IEC 27001 (control de accesos) |
+| Prevención de fugas | Nada impidió que un documento con datos sensibles se enviara a un tercero no autorizado | Ley 1581, principio de acceso y circulación restringida |
+| Minimización | Para calificar una patología se envió la historia completa, no solo la información necesaria | Ley 1581, principio de finalidad |
+
+**Relación con la validación técnica.** La maqueta de la sección 7 muestra los controles que reducen este riesgo: un rol sin autorización no puede leer el historial, y cada consulta queda registrada. Pero el caso muestra también lo que la maqueta no cubre: un usuario **autorizado** que saca la información del sistema y la envía a quien no debe. Ese riesgo se atiende con controles de prevención de fugas (DLP), minimización y formación, que son justamente tres de los ítems que GobData tiene en Parcial.
+
+**Preguntas para el análisis.**
+
+1. ¿Qué ítem del checklist de GobData habría evitado este caso si estuviera en "Cumple"? ¿Por qué no basta con los ítems que ya cumple?
+2. Si GobData tuviera el registro de auditoría de la sección 7, ¿qué mostraría sobre este incidente? ¿Lo habría evitado o solo permitiría reconstruirlo?
+3. ¿Qué información mínima necesitaba realmente el empleador para el trámite? Redacte la recomendación como si fuera una fila de la hoja Brechas Identificadas.
+
+**Fuentes.** [SIC, comunicado "La SIC sanciona a SOS EPS por divulgar, sin autorización ni justificación legal, la historia clínica de un paciente, incluido su diagnóstico de VIH"](https://sedeelectronica.sic.gov.co/comunicado/la-sic-sanciona-sos-eps-por-divulgar-sin-autorizacion-ni-justificacion-legal-la-historia-clinica-de-un-paciente-incluido-su-diagnostico-de); [La República, 22 de agosto de 2025](https://www.larepublica.co/empresas/sancionan-a-eps-sos-por-divulgar-historia-clinica-de-un-paciente-sin-autorizacion-4208486); [Consultorsalud](https://consultorsalud.com/sic-sanciona-eps-sos-historia-clinica-vih/). Las fuentes consultadas no indican el número de la resolución ni el monto de la sanción; búsquelos en el [portal de sanciones de la SIC](https://www.sic.gov.co/sanciones-proteccion-datos-personales-2025) antes de citarlos.
+
+### 8.2 Contexto: la SIC investiga cada vez más
+
+Según un balance de la propia SIC publicado en agosto de 2025, en lo corrido de ese año su Delegatura para la Protección de Datos Personales inició 101 investigaciones (frente a 83 en 2024 y 55 en 2023) e impuso multas por $5.157 millones (frente a $4.932 millones en 2024) ([SIC, sede electrónica](https://sedeelectronica.sic.gov.co/noticias/por-violacion-las-normas-de-proteccion-de-datos-personales-la-superintendencia-de-industria-y-comercio-ha-iniciado-101-investigaciones-e)). Para el informe del cliente, esto convierte el riesgo legal de una brecha en algo medible y no hipotético.
+
+### 8.3 Panorama tecnológico
+
+Ninguna herramienta "cumple la ley" por sí sola: cada una apoya un ítem del checklist, y la evidencia sigue siendo responsabilidad de la organización.
+
+| Necesidad | Tecnologías | Ítem del checklist que apoya |
+|---|---|---|
+| Descubrir y clasificar datos personales | Microsoft Presidio (código abierto), Microsoft Purview, Google Cloud Sensitive Data Protection | Paso 1 de la metodología: saber dónde están los datos sensibles antes de protegerlos |
+| Gestión de autorizaciones y consentimiento | OneTrust, Didomi, desarrollos propios con registro de la autorización y su revocatoria | Ítems 1 y 2 (consentimiento y revocatoria) |
+| Cifrado y gestión de llaves | AWS KMS, Azure Key Vault, Google Cloud KMS, HashiCorp Vault; en la base de datos, pgcrypto o el cifrado transparente del motor | Ítem 4 (cifrado), y la limitación de la maqueta de la sección 7.3 |
+| Enmascaramiento y anonimización | PostgreSQL Anonymizer, enmascaramiento dinámico de SQL Server, herramientas de seudonimización | Ítem 10 (anonimización) |
+| Prevención de fugas (DLP) | Microsoft Purview DLP, Google Workspace DLP, Forcepoint | Ítem 8 (exportaciones) y el caso SOS EPS |
+| Auditoría y monitoreo | Registro de auditoría del motor (por ejemplo pgAudit en PostgreSQL), Wazuh, Microsoft Sentinel | Ítem 7 (logs de acceso) |
+| Gestión de cumplimiento (GRC) | Eramba (versión comunitaria), ServiceNow GRC, OneTrust | Mantener el checklist, las evidencias y las brechas vivas, no en una hoja que se actualiza una vez al año |
+
+### 8.4 Aplicarlo al cliente real
+
+1. Busque un caso de sanción o incidente de protección de datos en el sector del cliente. El [portal de sanciones de la SIC](https://www.sic.gov.co/sanciones-proteccion-datos-personales-2025) y los boletines jurídicos de la SIC son fuentes primarias.
+2. Analícelo con la [plantilla de análisis de caso](../plantillas/plantilla_analisis_caso.md) y guárdelo en `entrega/analisis-caso.md`.
+3. En la sección 5 de la plantilla, compare dos tecnologías del panorama anterior para la brecha de mayor prioridad del checklist del cliente.
+
+---
+
 _Esta guía hace parte del Taller 6 de Checklist de Cumplimiento Normativo — curso Arquitectura Empresarial, Universidad de La Sabana._
