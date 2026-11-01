@@ -80,11 +80,13 @@ taller-06-normatividad/
 ├── entrega/
 │   ├── checklist-cliente.xlsx
 │   ├── informe.md                         # Ver plantillas/plantilla_informe_taller.md
+│   ├── analisis-caso.md                   # Opcional: ver plantillas/plantilla_analisis_caso.md
 │   └── referencias.md                     # Ver plantillas/plantilla_referencias.md
 └── plantillas/
     ├── plantilla_checklist.xlsx           # Plantilla oficial en blanco, misma estructura que checklist-gobdata.xlsx
     ├── plantilla_informe_taller.md
     ├── plantilla_notas.md
+    ├── plantilla_analisis_caso.md
     └── plantilla_referencias.md
 ```
 
